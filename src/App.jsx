@@ -1,9 +1,17 @@
 import React from "react";
-import { Header } from "./1.header/Header";
+import { Navegacion } from "./1.header/Navegacion";
+import Destacados from "./2.main/Destacados";
 
 function App() {
   return (
-      <Header></Header>
+    <>
+    <heather>
+      <Navegacion></Navegacion>
+    </heather>
+    <body className="container mx-5">
+      <Destacados></Destacados>
+    </body>
+    </>
   );
 }
 
