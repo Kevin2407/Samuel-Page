@@ -1,6 +1,7 @@
 import React from "react";
 import { Navegacion } from "./1.header/Navegacion";
 import Destacados from "./2.main/Destacados";
+import './style.css';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
     <heather>
       <Navegacion></Navegacion>
     </heather>
-    <body className="container mx-5">
+    <body className="container centrar">
       <Destacados></Destacados>
     </body>
     </>
