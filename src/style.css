@@ -1,0 +1,80 @@
+/* ESTILOS PARA LA PAGINA */
+
+.centrar{
+    justify-content: center;
+}
+
+
+/* Navegacion */
+
+.contenedor-nav{
+    display: flex;
+}
+
+
+.titulo-principal{
+    width: 50%;
+}
+
+.titulo-principal > a {
+    text-decoration: none;
+    color: black;
+}
+
+.buscador{
+    width: 50%;
+
+}
+
+.buscador > div {
+    display: flex;
+    justify-content: right;
+
+}
+
+.buscador > div > input {
+    border-radius: 5px 0px 0px 5px ;
+    border-width: 1px;
+}
+
+.buscador > div > button {
+    border-radius: 0px 5px 5px 0px ;
+    background-color: #006dc0;
+}
+
+
+
+/* media querys */
+
+@media screen and (max-width: 576px) {
+
+            /* Navegacion */
+
+            .contenedor-nav{
+                display: inline-block;
+            }
+
+
+            .titulo-principal{
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .buscador{
+                width: 100%;
+            }
+
+            .buscador > div {
+                display: flex;
+                justify-content: left;
+            }
+
+            .boton-hamburguesa{
+                position: absolute;
+                right: 20px;
+                bottom: 100px;
+            
+            }
+
+
+}

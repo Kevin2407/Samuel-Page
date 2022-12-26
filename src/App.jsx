@@ -1,6 +1,6 @@
 import React from "react";
-import { Navegacion } from "./1.header/Navegacion";
-import Destacados from "./2.main/Destacados";
+import { Navegacion } from "./header/Navegacion";
+import './style.css';
 
 function App() {
   return (
