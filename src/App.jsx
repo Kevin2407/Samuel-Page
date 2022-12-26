@@ -6,6 +6,7 @@ function App() {
   return (
     <>
     <heather>
+      <Navegacion></Navegacion>
     </heather>
     </>
   );
