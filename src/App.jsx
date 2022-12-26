@@ -6,11 +6,7 @@ function App() {
   return (
     <>
     <heather>
-      <Navegacion></Navegacion>
     </heather>
-    <body className="container mx-5">
-      <Destacados></Destacados>
-    </body>
     </>
   );
 }
