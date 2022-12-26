@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style.css';
+import './heather.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
