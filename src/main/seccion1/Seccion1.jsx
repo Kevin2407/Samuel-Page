@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Destacados from './seccion1/Destacados';
+import Destacados from './Destacados';
 
 class Seccion1 extends Component {
     render() {
