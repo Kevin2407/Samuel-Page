@@ -1,13 +1,14 @@
 import React from "react";
 import Seccion1 from "./main/seccion1/Seccion1";
-import Articulo from "./main/seccion2/Articulo";
+import ListaArticulos from "./main/seccion2/ListaArticulos";
 import './style.css';
 
 function App() {
   return (
     <div className="container centrar">
     <body>
-      <Articulo></Articulo>
+      <Seccion1></Seccion1>
+      <ListaArticulos></ListaArticulos>
     </body>
     </div>
   );
