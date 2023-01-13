@@ -1,0 +1,49 @@
+/* estilos para la seccion 2 */
+
+
+.article-nota{
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.section-nota{
+    padding: 1px 20px 10px 30px;
+}
+
+.section-nota > a {
+    text-decoration: none;
+    color:rgb(51, 51, 51);
+    font-size: xx-large;
+}
+
+.section-nota > div {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+}
+
+.div-img{
+    width: 100%;
+}
+
+.div-img > img {
+    width: 150px;
+    height: auto;
+
+}
+
+@media (max-width: 768px){
+
+    .section-nota{
+        padding: 0px 0px 10px 12px;
+    }
+
+    .section-nota > div > p {
+        font-size:  calc(0.4em + 1vw);
+    }
+
+}
+
