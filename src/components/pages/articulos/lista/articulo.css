@@ -8,7 +8,7 @@
 }
 
 .section-nota{
-    padding: 1px 20px 10px 30px;
+    padding: 1px 20px 10px 15px;
 }
 
 .section-nota > a {
@@ -27,6 +27,7 @@
 
 .div-img{
     width: 100%;
+    margin-left: 10px;
 }
 
 .div-img > img {

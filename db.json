@@ -1,0 +1,16 @@
+{
+    "Articulos": [
+        {
+            "titulo": "Por que deberias odiar a peron",
+            "contenido": "Lorem, ipsum dolor sit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero?",
+            "fecha": "13/01/2023",
+            "id": 1
+        },
+        {
+            "titulo": "La pachi va a coro",
+            "contenido": "Lorem, ipsum dolor sit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero?",
+            "fecha": "13/01/2023",
+            "id": 2
+        }
+    ]
+}

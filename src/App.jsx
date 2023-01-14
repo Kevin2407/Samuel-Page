@@ -1,28 +1,57 @@
-import React from "react";
-import { Navegacion } from "./header/Navegacion";
-import Seccion1 from "./main/seccion1/Seccion1";
-import ListaArticulos from "./main/seccion2/ListaArticulos";
+import { React, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import Inicio from "./components/inicio/Inicio";
+import { Navegacion } from "./components/common/header/Navegacion";
+import Inicio from "./components/pages/inicio/Inicio";
+import Administracion from "./components/pages/articulos/Administrar";
+import Agregar from "./components/pages/articulos/agregarArticulo/Agregar";
+
+
 
 function App() {
+
+  const [articulos,setArticulos] = useState([]);
+  const URL = process.env.REACT_APP_API_URL;
+
+  useEffect(
+    ()=> {
+      consultarAPI();
+    },[]);
+
+    const consultarAPI = async ()=>{
+      try{
+        const consulta =  await fetch(URL);
+        const respuesta = await consulta.json();
+        setArticulos(respuesta);
+      }catch(error){
+        console.log(error);
+      }
+    }
+
+
+
   return (
     <div className="container centrar">
-    <Router>
-      <Navegacion></Navegacion>
-      <Switch>
-        <Route exact path='/'>
-          <Inicio></Inicio>
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <Navegacion></Navegacion>
+        <Switch>
+          <Route exact path='/'>
+            <Inicio articulos={articulos}></Inicio>
+          </Route>
+          <Route exact path='/administracion'>
+            <Administracion articulos={articulos}></Administracion>
+          </Route>
+          <Route exact path='/administracion/agregar'>
+            <Agregar></Agregar>
+          </Route>
+        </Switch>
+      </Router>
     </div>
-  );
+  )
 }
+
 
 export default App;
