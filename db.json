@@ -1,0 +1,28 @@
+{
+  "Articulos": [
+    {
+      "titulo": "Por que deberias odiar a peron",
+      "contenido": "Lorem, ipsum dolor sit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero?",
+      "fecha": "13/01/2023",
+      "id": 1
+    },
+    {
+      "titulo": "La pachi va a coro",
+      "contenido": "Lorem, ipsum dolor sit Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores odit vitae ipsam id unde magni dolorum. Praesentium eligendi ratione fugit. Obcaecati pariatur impedit non doloribus quisquam mollitia amet magnam vero?",
+      "fecha": "13/01/2023",
+      "id": 2
+    },
+    {
+      "titulo": "fgsdfgfsdg",
+      "contenido": "<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>",
+      "fecha": "2023-01-14T20:11:31.346Z",
+      "id": 3
+    },
+    {
+      "titulo": "peron peron dfksf",
+      "contenido": "<h1><strong>viva peron</strong></h1>\n<p>&nbsp;</p>\n<p>holi</p>",
+      "fecha": "2023-01-14T20:12:56.307Z",
+      "id": 4
+    }
+  ]
+}

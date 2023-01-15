@@ -3,6 +3,8 @@ import './heather.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import { NavLink } from 'react-router-dom';
+
 
 
 
@@ -33,11 +35,11 @@ export function Navegacion() {
           <Navbar.Toggle className='boton-hamburguesa' aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '200px' }} navbarScroll>
-              <Nav.Link href="#action2" className='fs-4'>Artículos</Nav.Link>
-              <Nav.Link href="#action2" className='fs-4'>Libros</Nav.Link>
-              <Nav.Link href="#action2" className='fs-4'>Consultoría</Nav.Link>
-              <Nav.Link href="#action2" className='fs-4'>Preguntame</Nav.Link>
-              <Nav.Link href="#action2" className='fs-4'>Quíen soy</Nav.Link>
+              <NavLink exact={true} to='/' className='nav-link' >Artículos</NavLink>
+              <NavLink exact={true} to='/administracion' className='nav-link' >Administrar</NavLink>
+              <NavLink exact={true} to='/' className='nav-link' >Consultoría</NavLink>
+              <NavLink exact={true} to='/' className='nav-link' >Preguntame</NavLink>
+              <NavLink exact={true} to='/' className='nav-link' >Quíen soy</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
