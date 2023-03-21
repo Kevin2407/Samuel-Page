@@ -47,6 +47,9 @@ function App() {
           <Route exact path='/administracion/agregar'>
             <Agregar consultarAPI={consultarAPI} ></Agregar>
           </Route>
+          <Route exact path='/articulo/:id'>
+            <Agregar consultarAPI={consultarAPI} ></Agregar>
+          </Route>
         </Switch>
       </Router>
     </div>
