@@ -1,20 +1,43 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Editor } from '@tinymce/tinymce-react';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
 
 
+function Editar(props) {
 
-function Agregar(props) {
+
 
     const URL = process.env.REACT_APP_API_URL;
     const [titulo, setTitulo] = useState("");
-    const [contenido, setContenido] = useState("<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>");
+    const [contenido, setContenido] = useState("");
+    const [articuloEditar, setArticuloEditar] = useState({});
     const [error, setError] = useState(false);
-    const fecha = new Date();
-    const [fechaHoy, setFechaHoy] = useState(`${fecha.getDay()} ${fecha.getDate()} de ${fecha.getMonth()} de ${fecha.getFullYear}`);
     const [loading, setLoading] = useState(false);
+
+    // obtengo el parametro de la URL
+    const id = props.match.params.id;
+
+    useEffect(() => {
+        async function llamarArticulo() {
+
+            // consultar producto seleccionado
+            try {
+                const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/${id}`);
+                if (respuesta.status === 200) {
+                    const resultado = await respuesta.json();
+                    setArticuloEditar(resultado);
+                    console.log(articuloEditar)
+                    setTitulo(articuloEditar.titulo);
+                    setContenido(articuloEditar.contenido);
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        llamarArticulo();
+    }, []);
 
 
 
@@ -39,7 +62,7 @@ function Agregar(props) {
             console.log(contenido);
 
 
-            if (titulo.trim() === "" || contenido.trim() === '') {
+            if (articuloEditar.titulo.trim() === "" || articuloEditar.contenido.trim() === '') {
                 // mostrar cartel de error
                 console.log('formulario erroneo');
                 setLoading(false);
@@ -60,15 +83,14 @@ function Agregar(props) {
                 // crear objeto a enviar
                 const datos = {
                     titulo: titulo,
-                    contenido: contenido,
-                    fecha: fecha
+                    contenido: contenido
                 }
 
 
                 // enviar el objeto a la api, operacion POST
                 try {
                     const parametros = {
-                        method: 'POST',
+                        method: 'PUT',
                         headers: {
                             "Content-Type": "application/json"
                         },
@@ -76,8 +98,8 @@ function Agregar(props) {
                     }
 
                     // ejecutar la solicitud
-                    const respuesta = await fetch(URL, parametros);
-                    if (await respuesta.status === 201) {
+                    const respuesta = await fetch(URL + '/' + id, parametros);
+                    if (await respuesta.status === 200) {
                         // recargar los articulos
                         props.consultarAPI();
                         // redireccionar a administracion
@@ -85,14 +107,13 @@ function Agregar(props) {
                         // cartel de exito
                         await Swal.fire(
                             'Perfecto!',
-                            'El articulo a sido publicado',
+                            'El articulo a sido editado',
                             'Cerrar'
                         )
 
                         //   limpiar formulario
                         setTitulo('');
                         setContenido('');
-                        setFechaHoy(`${fecha.getDay()} ${fecha.getDate()} de ${fecha.getMonth()} de ${fecha.getFullYear}`);
 
 
 
@@ -122,14 +143,14 @@ function Agregar(props) {
                 <h1 className='mb-4'>Agregar nuevo Articulo</h1>
                 <Form.Group className='mb-5'>
                     <Form.Label>Titulo del articulo</Form.Label>
-                    <Form.Control type="text" placeholder="Titulo" onChange={(e) => setTitulo(e.target.value)} />
+                    <Form.Control type="text" placeholder="Titulo" onChange={(e) => setTitulo(e.target.value)} defaultValue={articuloEditar.titulo} />
                 </Form.Group>
                 <Form.Group>
                     <Editor
                         onChange={() => setContenido(editorRef.current.getContent())}
                         tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
                         onInit={(evt, editor) => editorRef.current = editor}
-                        initialValue='<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>'
+                        initialValue={articuloEditar.contenido}
                         init={{
                             height: 500,
                             menubar: true,
@@ -154,4 +175,4 @@ function Agregar(props) {
 
 
 
-export default withRouter(Agregar);
+export default withRouter(Editar);

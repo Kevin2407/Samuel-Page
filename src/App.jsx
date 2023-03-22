@@ -8,6 +8,7 @@ import { Navegacion } from "./components/common/header/Navegacion";
 import Inicio from "./components/pages/inicio/Inicio";
 import Administracion from "./components/pages/articulos/Administrar";
 import Agregar from "./components/pages/articulos/agregarArticulo/Agregar";
+import Editar from "./components/pages/articulos/editarArticulo/Editar";
 
 
 
@@ -47,8 +48,8 @@ function App() {
           <Route exact path='/administracion/agregar'>
             <Agregar consultarAPI={consultarAPI} ></Agregar>
           </Route>
-          <Route exact path='/articulo/:id'>
-            <Agregar consultarAPI={consultarAPI} ></Agregar>
+          <Route exact path='/administracion/editar/:id'>
+            <Editar consultarAPI={consultarAPI}  articulos={articulos}></Editar>
           </Route>
         </Switch>
       </Router>

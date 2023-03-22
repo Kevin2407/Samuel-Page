@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import foto from './default-seccion2.png';
 import './articulo.css';
+import {Link} from 'react-router-dom';
+
 
 class Articulo extends Component {
 
@@ -55,7 +57,7 @@ class Articulo extends Component {
                 </section>
             </article>
             <div className='text-center' style={{display:"grid",alignContent: "center"}}>
-                <button className='btn btn-warning text-light mb-1'>Editar</button>
+                <Link to={`/administracion/editar/${this.props.articulo._id}`} className='btn btn-warning text-light mb-1'>Editar</Link>
                 <button className='btn btn-danger mt-1'>Borrar</button>
             </div>
             </React.Fragment>
