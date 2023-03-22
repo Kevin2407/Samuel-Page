@@ -43,7 +43,7 @@ function App() {
             <Inicio articulos={articulos}></Inicio>
           </Route>
           <Route exact path='/administracion'>
-            <Administracion articulos={articulos}></Administracion>
+            <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>
           </Route>
           <Route exact path='/administracion/agregar'>
             <Agregar consultarAPI={consultarAPI} ></Agregar>

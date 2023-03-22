@@ -17,7 +17,7 @@ export default class Administrar extends Component {
                 <div className='' >
                     <Link to="/administracion/agregar" className='btn miBoton admin-btn'>Añadir Articulo</Link>
                 </div>
-                <ListaArticulosEdit articulos={this.props.articulos}></ListaArticulosEdit>
+                <ListaArticulosEdit consultarAPI={this.props.consultarAPI} articulos={this.props.articulos}></ListaArticulosEdit>
             </div>
         )
     }

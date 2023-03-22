@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import foto from './default-seccion2.png';
 import './articulo.css';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 
 class Articulo extends Component {
@@ -11,55 +13,93 @@ class Articulo extends Component {
     }
 
 
-    
-    
+
+
     render() {
 
-        const editar = (e)=>{
-            e.preventDefault();
+        
+        const borrar = (id) => {
+            
+            const URL = process.env.REACT_APP_API_URL + '/' + id;
 
-            const {titulo, contenido, imagen, fecha} = this.props.Articulo;
+            Swal.fire({
+                title: 'Estas seguro que quieres eliminar el producto?',
+                text: "No puedes recuperar el producto una vez eliminado",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
 
-            const datos = {
-                titulo,
-                contenido,
-                imagen,
-                fecha
-            }
+                    try {
+                        const response = await fetch(URL, {
+                            method: 'DELETE',
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        });
 
-            try {
-                const parametros = {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(datos)
+                        if (response.status === 200) {
+                            // mostrar cartel de prod. eliminado
+                            Swal.fire(
+                                'Borrado!',
+                                'El producto ha sido borrado.',
+                                'success'
+                            )
+
+                            // actualizar los datos
+                            this.props.consultarAPI();
+
+
+                        } else {
+
+                            Swal.fire(
+                                'Se produjo un error!',
+                                'Intentelo nuevamente',
+                                'error'
+                            )
+
+
+                        }
+
+                    } catch (error) {
+                        console.log(error);
+
+                        Swal.fire(
+                            'Se produjo un error!',
+                            'Intentelo en unos minutos',
+                            'error'
+                        )
+                    }
                 }
-            } catch (error) {
-                console.log(error);
-            }
+            })
+
+
         }
 
 
         return (
             <React.Fragment>
 
-            <article className='article-nota'>
-                <div className='div-img'>
-                    {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
-                    <img src={foto} alt="imagen de nota" />
-                </div>
-                <section className='section-nota'>
-                    <a href="#" className='lead'>{this.props.articulo.titulo}</a>
-                    <div>
-                        <p>{this.props.articulo.contenido}</p>
+                <article className='article-nota'>
+                    <div className='div-img'>
+                        {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
+                        <img src={foto} alt="imagen de nota" />
                     </div>
-                </section>
-            </article>
-            <div className='text-center' style={{display:"grid",alignContent: "center"}}>
-                <Link to={`/administracion/editar/${this.props.articulo._id}`} className='btn btn-warning text-light mb-1'>Editar</Link>
-                <button className='btn btn-danger mt-1'>Borrar</button>
-            </div>
+                    <section className='section-nota'>
+                        <a href="#" className='lead'>{this.props.articulo.titulo}</a>
+                        <div>
+                            <p>{this.props.articulo.contenido}</p>
+                        </div>
+                    </section>
+                </article>
+                <div className='text-center' style={{ display: "grid", alignContent: "center" }}>
+                    <Link to={`/administracion/editar/${this.props.articulo._id}`} className='btn btn-warning text-light mb-1'>Editar</Link>
+                    <button className='btn btn-danger mt-1' onClick={()=> borrar(this.props.articulo._id)}>Borrar</button>
+                </div>
             </React.Fragment>
         );
     }
