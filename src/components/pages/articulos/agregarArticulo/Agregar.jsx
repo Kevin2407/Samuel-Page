@@ -52,6 +52,7 @@ function Agregar(props) {
 
                     // ejecutar la solicitud
                     const respuesta = await fetch(URL, parametros);
+                    Swal.showLoading();
                     if (await respuesta.status === 201) {
                         Swal.fire(
                             'Perfecto!',
