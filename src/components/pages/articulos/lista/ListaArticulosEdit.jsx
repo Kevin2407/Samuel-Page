@@ -18,10 +18,7 @@ class ListaArticulosEdit extends Component {
                                 <div className='border'>
                                     <li className='d-flex'>
                                         <Articulo articulo={item} ></Articulo>
-                                        <div className='text-center' style={{display:"grid",alignContent: "center"}}>
-                                            <button className='btn btn-warning text-light mb-1'>Editar</button>
-                                            <button className='btn btn-danger mt-1'>Borrar</button>
-                                        </div>
+                                        
                                     </li>
                                 </div>
                             )

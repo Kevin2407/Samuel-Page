@@ -4,15 +4,47 @@ import './articulo.css';
 
 class Articulo extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
 
+    
+    
     render() {
+
+        const editar = (e)=>{
+            e.preventDefault();
+
+            const {titulo, contenido, imagen, fecha} = this.props.Articulo;
+
+            const datos = {
+                titulo,
+                contenido,
+                imagen,
+                fecha
+            }
+
+            try {
+                const parametros = {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+
         return (
+            <React.Fragment>
+
             <article className='article-nota'>
                 <div className='div-img'>
+                    {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
                     <img src={foto} alt="imagen de nota" />
                 </div>
                 <section className='section-nota'>
@@ -22,6 +54,11 @@ class Articulo extends Component {
                     </div>
                 </section>
             </article>
+            <div className='text-center' style={{display:"grid",alignContent: "center"}}>
+                <button className='btn btn-warning text-light mb-1'>Editar</button>
+                <button className='btn btn-danger mt-1'>Borrar</button>
+            </div>
+            </React.Fragment>
         );
     }
 }
