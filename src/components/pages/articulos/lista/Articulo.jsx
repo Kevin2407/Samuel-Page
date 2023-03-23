@@ -19,9 +19,9 @@ class Articulo extends Component {
 
     render() {
 
-        
+
         const borrar = (id) => {
-            
+
             const URL = process.env.REACT_APP_API_URL + '/' + id;
 
             Swal.fire({
@@ -87,21 +87,28 @@ class Articulo extends Component {
             <React.Fragment>
 
                 <article className='article-nota'>
-                    <div className='div-img'>
-                        {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
-                        <img src={foto} alt="imagen de nota" />
-                    </div>
-                    <section className='section-nota'>
-                        <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
-                        <div>
-                            <p>{this.props.articulo.contenido}</p>
+                    <div className='div-img-nota'>
+                        <div className='div-img'>
+                            {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
+                            <img src={foto} alt="imagen de nota" />
+                            {/* {width: 100%} */}
                         </div>
-                    </section>
+                        <section className='section-nota'>
+                            <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
+                            <div>
+                                <p>{this.props.articulo.contenido}</p>
+                            </div>
+                        </section>
+
+                    </div>
+                    {/* <div> */}
+                        <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'flex-end' }}>
+                            <Link to={`/administracion/editar/${this.props.articulo._id}`} className='btn btn-warning text-light mb-1'>Editar</Link>
+                            <button className='btn btn-danger mt-1' onClick={() => borrar(this.props.articulo._id)}>Borrar</button>
+                        </div>
+
+                    {/* </div> */}
                 </article>
-                <div className='text-center' style={{ display: "grid", alignContent: "center" }}>
-                    <Link to={`/administracion/editar/${this.props.articulo._id}`} className='btn btn-warning text-light mb-1'>Editar</Link>
-                    <button className='btn btn-danger mt-1' onClick={()=> borrar(this.props.articulo._id)}>Borrar</button>
-                </div>
             </React.Fragment>
         );
     }

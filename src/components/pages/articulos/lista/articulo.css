@@ -1,37 +1,54 @@
 /* estilos para la seccion 2 */
 
+.div-img-nota{
+    display:flex;
+    justify-content: flex-start;
+    width: 80%;
+}
 
 .article-nota{
     display: flex;
     margin: 10px 0;
-    width: 100%;
+    width: 99%;
+    justify-content: space-between;
+    /* overflow: auto; */
 }
 
 .section-nota{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
     padding: 1px 20px 10px 15px;
+    width: 70%;
 }
 
 .section-nota > a {
     text-decoration: none;
     color:rgb(51, 51, 51);
-    font-size: xx-large;
+    font-size: 2.5vw;
 }
 
 .section-nota > div {
     overflow: hidden;
+    width: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 
 }
 
+.section-nota > div > p {
+    font-size: 1.1vw;
+
+}
+
 .div-img{
-    width: 100%;
+    width: 15vw;
     margin-left: 10px;
 }
 
 .div-img > img {
-    width: 150px;
+    width: 100%;
     height: auto;
 
 }
@@ -42,8 +59,12 @@
         padding: 0px 0px 10px 12px;
     }
 
+    .section-nota > a {
+        font-size: 3vw;
+    }
+
     .section-nota > div > p {
-        font-size:  calc(0.4em + 1vw);
+        font-size:  calc(0.2em + 1vw);
     }
 
 }
