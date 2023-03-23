@@ -1,65 +1,8 @@
-// import React, {Fragment, useEffect, useState } from 'react';
-// import {useParams} from 'react-router-dom';
-// import parse from 'html-react-parser';
-
-// export default function PagArticulo(props) {
-
-
-//   const [articuloSelect,setArticuloSelect] = useState({});
-
-//   const id = useParams().id;
-
-//   const llamar = async()=>{
-//   // consultar producto seleccionado
-//   try {
-//       const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/${id}`);
-//       console.log(respuesta)
-//       if (respuesta.status === 200) {
-//         const resultado = await respuesta.json();
-//         setArticuloSelect(resultado);
-//         console.log(resultado)
-//         console.log(articuloSelect)
-
-//         }
-//       } catch (e) {
-//         console.log(e)
-//       }
-
-//       props.consultarAPI();
-
-//   console.log(articuloSelect)
-//   console.log(articuloSelect.contenido)
-//   }
-
-// useEffect(()=>{
-
-//   llamar();
-// },[]);
-
-
-
-
-
-
-
-//     return (
-//       <Fragment>
-//         <div>
-//           <div>{articuloSelect.titulo}</div>
-//           <div>fecha</div>
-//           {/* <div>{parse(articuloSelect.contenido)}</div> */}
-//         </div>
-//       </Fragment>
-//     )
-// }
-
-
-
-
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import Spinner from 'react-bootstrap/Spinner';
+import './articulos.css';
 
 
 
@@ -87,14 +30,15 @@ export default function PagArticulo(props) {
 
             if (articuloSelect.titulo && articuloSelect.fecha && articuloSelect.contenido) {
               const contenido = parse(articuloSelect.contenido);
+              console.log(contenido)
               return (
-                <div>
+                <Fragment>
 
-                  <div>{articuloSelect.titulo}</div>
-                  <div>fecha</div>
-                  <div>{contenido}</div>
+                  <div className='mt-4'><h1 className='tamanio-titulo'>{articuloSelect.titulo}</h1></div>
+                  <div className='my-3'><p style={{fontSize: 'small'}}>{articuloSelect.fecha}</p></div>
+                  <div><p>{contenido}</p></div>
 
-                </div>
+                </Fragment>
 
 
               )

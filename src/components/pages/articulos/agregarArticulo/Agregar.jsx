@@ -129,7 +129,7 @@ function Agregar(props) {
                         onChange={() => setContenido(editorRef.current.getContent())}
                         tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce/tinymce.min.js'}
                         onInit={(evt, editor) => editorRef.current = editor}
-                        initialValue='<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>'
+                        initialValue='<h3><strong>Aca podes escribir el articulo y editarlo.</strong></h3>'
                         init={{
                             height: 500,
                             menubar: true,

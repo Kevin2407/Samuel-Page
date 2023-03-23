@@ -3,6 +3,8 @@ import foto from './default-seccion2.png';
 import './articulo.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import parse from 'html-react-parser';
+
 
 
 
