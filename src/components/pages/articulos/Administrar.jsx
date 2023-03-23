@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap';
 import ListaArticulosEdit from './lista/ListaArticulosEdit'
 import './articulos.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default class Administrar extends Component {
 
@@ -13,9 +14,9 @@ export default class Administrar extends Component {
 
     render() {
         return (
-            <div>
-                <div className='' >
-                    <Link to="/administracion/agregar" className='btn miBoton admin-btn'>Añadir Articulo</Link>
+            <div className='contenedor'>
+                <div className='d-flex justify-content-end' >
+                    <Link to="/administracion/agregar" className='btn miBoton admin-btn'><FontAwesomeIcon icon={faPlus} style={{color: "#f5f5f5",}} /></Link>
                 </div>
                 <ListaArticulosEdit consultarAPI={this.props.consultarAPI} articulos={this.props.articulos}></ListaArticulosEdit>
             </div>

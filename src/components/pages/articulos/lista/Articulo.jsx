@@ -3,7 +3,8 @@ import foto from './default-seccion2.png';
 import './articulo.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import parse from 'html-react-parser';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -103,8 +104,8 @@ class Articulo extends Component {
                     </div>
                     {/* <div> */}
                         <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'flex-end' }}>
-                            <Link to={`/administracion/editar/${this.props.articulo._id}`} className='btn btn-warning text-light mb-1'>Editar</Link>
-                            <button className='btn btn-danger mt-1' onClick={() => borrar(this.props.articulo._id)}>Borrar</button>
+                            <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0"}} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
+                            <button style={{ backgroundColor: "#006dc0"}} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={faTrash} style={{ color: "#f5f5f5", }} /></button>
                         </div>
 
                     {/* </div> */}
