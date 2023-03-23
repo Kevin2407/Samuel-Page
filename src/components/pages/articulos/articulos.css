@@ -16,12 +16,12 @@
 /* pagina articulos */
 
 .tamanio-titulo {
-    font-size: 11vw;
+    font-size: 5vw;
 }
 
 @media (max-width: 800px) {
     .tamanio-titulo {
-        font-size: 5vw;
+        font-size: 11vw;
     }
 
     /* .miBoton{
