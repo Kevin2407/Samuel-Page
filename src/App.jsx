@@ -9,6 +9,7 @@ import Inicio from "./components/pages/inicio/Inicio";
 import Administracion from "./components/pages/articulos/Administrar";
 import Agregar from "./components/pages/articulos/agregarArticulo/Agregar";
 import Editar from "./components/pages/articulos/editarArticulo/Editar";
+import PagArticulo from "./components/pages/articulos/PagArticulo"
 
 
 
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route exact path='/administracion/editar/:id'>
             <Editar consultarAPI={consultarAPI}  articulos={articulos}></Editar>
+          </Route>
+          <Route exact path='/articulo/:id'>
+            <PagArticulo consultarAPI={consultarAPI}  articulos={articulos}></PagArticulo>
           </Route>
         </Switch>
       </Router>

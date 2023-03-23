@@ -90,7 +90,7 @@ class Articulo extends Component {
                         <img src={foto} alt="imagen de nota" />
                     </div>
                     <section className='section-nota'>
-                        <a href="#" className='lead'>{this.props.articulo.titulo}</a>
+                        <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
                         <div>
                             <p>{this.props.articulo.contenido}</p>
                         </div>
