@@ -18,7 +18,7 @@ export default class Administrar extends Component {
                 <div className='d-flex justify-content-end' >
                     <Link to="/administracion/agregar" className='btn miBoton admin-btn'><FontAwesomeIcon icon={faPlus} style={{color: "#f5f5f5",}} /></Link>
                 </div>
-                <ListaArticulosEdit consultarAPI={this.props.consultarAPI} articulos={this.props.articulos}></ListaArticulosEdit>
+                <ListaArticulosEdit consultarAPI={this.props.consultarAPI} articulos={this.props.articulos} edit={true}></ListaArticulosEdit>
             </div>
         )
     }

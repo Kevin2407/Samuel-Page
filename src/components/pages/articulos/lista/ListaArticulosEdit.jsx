@@ -3,7 +3,7 @@ import Articulo from './Articulo';
 
 class ListaArticulosEdit extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
@@ -11,17 +11,17 @@ class ListaArticulosEdit extends Component {
     render() {
         return (
             <div>
-                <ul style={{listStyle:'none',margin:'0',marginTop:'30px',marginBottom:'30px',padding:'0'}}>
+                <ul style={{ listStyle: 'none', margin: '0', marginTop: '30px', marginBottom: '30px', padding: '0' }}>
                     {
                         this.props.articulos.map((item) => {
                             return (
                                 <div className='border'>
                                     <li className='d-flex'>
-                                        <Articulo consultarAPI={this.props.consultarAPI} articulo={item} ></Articulo>
+                                        <Articulo consultarAPI={this.props.consultarAPI} articulo={item} edit={this.props.edit}></Articulo>
                                     </li>
                                 </div>
                             )
-                    } )
+                        })
                     }
                 </ul>
             </div>

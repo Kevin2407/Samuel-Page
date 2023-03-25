@@ -41,7 +41,7 @@ function App() {
         <Navegacion></Navegacion>
         <Switch>
           <Route exact path='/'>
-            <Inicio articulos={articulos}></Inicio>
+            <Inicio consultarAPI={consultarAPI} articulos={articulos}></Inicio>
           </Route>
           <Route exact path='/administracion'>
             <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>

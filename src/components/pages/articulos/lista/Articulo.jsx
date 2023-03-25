@@ -102,13 +102,22 @@ class Articulo extends Component {
                         </section>
 
                     </div>
-                    {/* <div> */}
-                        <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'flex-end' }}>
-                            <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0"}} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
-                            <button style={{ backgroundColor: "#006dc0"}} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={faTrash} style={{ color: "#f5f5f5", }} /></button>
-                        </div>
 
-                    {/* </div> */}
+                    {
+
+                        ()=>{
+                            if(this.props.edit){
+                                return (
+                                    <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'flex-end' }}>
+                                        <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0"}} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
+                                        <button style={{ backgroundColor: "#006dc0"}} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={faTrash} style={{ color: "#f5f5f5", }} /></button>
+                                    </div>
+                                )
+                            }
+                        }
+                    }
+
+
                 </article>
             </React.Fragment>
         );

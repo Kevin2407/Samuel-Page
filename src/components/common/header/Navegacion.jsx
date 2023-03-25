@@ -37,9 +37,6 @@ export function Navegacion() {
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '200px' }} navbarScroll>
               <NavLink exact={true} to='/' className='nav-link' >Artículos</NavLink>
               <NavLink exact={true} to='/administracion' className='nav-link' >Administrar</NavLink>
-              <NavLink exact={true} to='/' className='nav-link' >Consultoría</NavLink>
-              <NavLink exact={true} to='/' className='nav-link' >Preguntame</NavLink>
-              <NavLink exact={true} to='/' className='nav-link' >Quíen soy</NavLink>
             </Nav>
           </Navbar.Collapse>
         </Navbar>

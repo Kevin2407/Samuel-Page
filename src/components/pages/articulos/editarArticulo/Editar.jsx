@@ -139,8 +139,7 @@ function Editar(props) {
 
     return (
         <div>
-            <Form>
-                <h1 className='mb-4'>Agregar nuevo Articulo</h1>
+            <Form className='mt-5'>
                 <Form.Group className='mb-5'>
                     <Form.Label>Titulo del articulo</Form.Label>
                     <Form.Control type="text" placeholder="Titulo" onChange={(e) => setTitulo(e.target.value)} defaultValue={articuloEditar.titulo} />

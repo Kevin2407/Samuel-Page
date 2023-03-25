@@ -5,7 +5,6 @@ import NewsLetter from "./NewsLetter";
 
 function Destacados() {
   return (
-    <section className="div-seccion1">
       <div className="div-destacada">
         <img src={foto} alt="imagen de nota destacada" />
         <article className="texto-destacado">
@@ -16,8 +15,6 @@ function Destacados() {
           </div>
         </article>
       </div>
-      <NewsLetter></NewsLetter>
-    </section>
   );
 }
 
