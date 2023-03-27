@@ -5,7 +5,7 @@
 .admin-btn {
     background-color: #006dc0 !important;
     color: #e4e4e4 !important;
-    margin-right: 5%;
+    margin-right: 4.1%;
 }
 
 .agregar-btn {
@@ -63,5 +63,17 @@
 @media (max-width: 500px) {
     .tamanio-titulo {
         font-size: 15vw;
+    }
+}
+
+@media (max-width: 420px) {
+    .svg-inline--fa {
+        vertical-align: 0.1em;
+    }
+}
+
+@media (max-width: 420px) {
+    .svg-inline--fa {
+        vertical-align: 0.2em;
     }
 }
