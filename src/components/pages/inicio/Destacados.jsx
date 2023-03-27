@@ -1,7 +1,6 @@
 import React from "react";
 import './seccion1.css';
 import foto from './foto.jpg';
-import NewsLetter from "./NewsLetter";
 
 function Destacados() {
   return (

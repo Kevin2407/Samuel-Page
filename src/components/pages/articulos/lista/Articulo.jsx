@@ -20,6 +20,19 @@ class Articulo extends Component {
 
     render() {
 
+        console.log(this.props.edit)
+
+        const mostrar = (admin) => {
+            
+            if (admin) {
+                return (
+                <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'flex-end' }}>
+                    <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0" }} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
+                    <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={faTrash} style={{ color: "#f5f5f5", }} /></button>
+                </div>
+                )
+                        }
+        }
 
         const borrar = (id) => {
 
@@ -85,41 +98,28 @@ class Articulo extends Component {
 
 
         return (
-            <React.Fragment>
 
-                <article className='article-nota'>
-                    <div className='div-img-nota'>
-                        <div className='div-img'>
-                            {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
-                            <img src={foto} alt="imagen de nota" />
-                            {/* {width: 100%} */}
-                        </div>
-                        <section className='section-nota'>
-                            <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
-                            <div>
-                                <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
-                            </div>
-                        </section>
-
+            <article className='article-nota'>
+                <div className='div-img-nota'>
+                    <div className='div-img'>
+                        {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
+                        <img src={foto} alt="imagen de nota" />
                     </div>
+                    <section className='section-nota'>
+                        <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
+                        <div>
+                            <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
+                        </div>
+                    </section>
 
-                    {
+                </div>
 
-                        ()=>{
-                            if(this.props.edit){
-                                return (
-                                    <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'flex-end' }}>
-                                        <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0"}} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
-                                        <button style={{ backgroundColor: "#006dc0"}} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={faTrash} style={{ color: "#f5f5f5", }} /></button>
-                                    </div>
-                                )
-                            }
-                        }
-                    }
+                {
+                    mostrar(this.props.edit)
+                }
 
 
-                </article>
-            </React.Fragment>
+            </article>
         );
     }
 }

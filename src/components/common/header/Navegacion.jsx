@@ -3,7 +3,7 @@ import './heather.css';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 
@@ -13,11 +13,11 @@ export function Navegacion() {
     <>
       <div className='container-fluid contenedor-nav mt-5'>
         <section className='titulo-principal'>
-          <a href="#">
+        <Link to={'/'}>
             <h1>
               SAMUEL VON ARX
             </h1>
-          </a>
+          </Link>
         </section>
         <section className='buscador'>
           <div>
