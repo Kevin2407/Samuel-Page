@@ -9,7 +9,8 @@ import Inicio from "./components/pages/inicio/Inicio";
 import Administracion from "./components/pages/articulos/Administrar";
 import Agregar from "./components/pages/articulos/agregarArticulo/Agregar";
 import Editar from "./components/pages/articulos/editarArticulo/Editar";
-import PagArticulo from "./components/pages/articulos/PagArticulo"
+import PagArticulo from "./components/pages/articulos/PagArticulo";
+import Busqueda from './components/pages/articulos/Busqueda'
 
 
 
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route exact path='/articulo/:id'>
             <PagArticulo consultarAPI={consultarAPI}  articulos={articulos}></PagArticulo>
+          </Route>
+          <Route exact path='/busqueda/:filtro'>
+            <Busqueda consultarAPI={consultarAPI}  articulos={articulos}></Busqueda>
           </Route>
         </Switch>
       </Router>

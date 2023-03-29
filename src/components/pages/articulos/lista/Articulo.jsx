@@ -20,8 +20,6 @@ class Articulo extends Component {
 
     render() {
 
-        console.log(this.props.edit)
-
         const mostrar = (admin) => {
             
             if (admin) {

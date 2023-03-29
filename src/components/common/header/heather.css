@@ -37,9 +37,26 @@
     border-width: 1px;
 }
 
-.buscador > div > button {
+.buscador > div > input:focus {
+    border-radius: 5px 0px 0px 5px !important;
+    border-width: 1px !important;
+}
+
+.buscador > div > a {
     border-radius: 0px 5px 5px 0px ;
     background-color: #006dc0;
+}
+
+.buscador > div > a:hover .btn {
+    border-color:black;
+}
+
+.buscador > div > a:hover .buscar {
+    color:black;
+}
+
+.buscador > div > a > svg {
+    color: aliceblue;
 }
 
 
