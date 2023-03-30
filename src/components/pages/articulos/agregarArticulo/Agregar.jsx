@@ -10,6 +10,7 @@ function Agregar(props) {
 
     const URL = process.env.REACT_APP_API_URL;
     const [titulo, setTitulo] = useState("");
+    const [img, setImg] = useState("");
     const [contenido, setContenido] = useState("<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>");
     const [error, setError] = useState(false);
     const fecha = new Date();
@@ -91,6 +92,7 @@ function Agregar(props) {
 
                         //   limpiar formulario
                         setTitulo('');
+                        setImg('');
                         setContenido('');
                         setFechaHoy(`${fecha.getDay()} ${fecha.getDate()} de ${fecha.getMonth()} de ${fecha.getFullYear}`);
 
@@ -120,9 +122,13 @@ function Agregar(props) {
         <div>
             <Form>
                 <h1 className='mb-4'>Agregar nuevo Articulo</h1>
-                <Form.Group className='mb-5'>
+                <Form.Group className='mb-2'>
                     <Form.Label>Titulo del articulo</Form.Label>
                     <Form.Control type="text" placeholder="Titulo" onChange={(e) => setTitulo(e.target.value)} />
+                </Form.Group>
+                <Form.Group className='mb-5'>
+                    <Form.Label>Imagen del articulo</Form.Label>
+                    <Form.Control type="text" placeholder="URL de la imagen" onChange={(e) => setImg(e.target.value)} />
                 </Form.Group>
                 <Form.Group>
                     <Editor
