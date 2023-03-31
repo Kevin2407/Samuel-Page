@@ -31,7 +31,6 @@ function App() {
         const respuesta = await consulta.json();
         setArticulos(respuesta);
         setArtDestacado(respuesta.find(art=> art.destacada));
-        console.log(artDestacado)
         return respuesta;
       }catch(error){
         console.log(error);
@@ -47,7 +46,7 @@ function App() {
         <Navegacion></Navegacion>
         <Switch>
           <Route exact path='/'>
-            <Inicio consultarAPI={consultarAPI} articulos={articulos}></Inicio>
+            <Inicio consultarAPI={consultarAPI} articulos={articulos} destacado={artDestacado}></Inicio>
           </Route>
           <Route exact path='/administracion'>
             <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>

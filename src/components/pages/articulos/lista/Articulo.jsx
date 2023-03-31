@@ -175,7 +175,6 @@ class Articulo extends Component {
                 body: JSON.stringify(datos)
             })
                 .then(response => {
-                    console.log(response.status)
                     if (response.status === 200) {
                         this.props.consultarAPI()
                         .then((arreglo)=>{
@@ -190,7 +189,6 @@ class Articulo extends Component {
                                         contenido: articulo.contenido,
                                         destacada: false
                                     }
-                                    console.log(articulo)
                                     await fetch(URL + '/' + articulo._id, {
                                         method: 'PUT',
                                         headers: {
@@ -219,37 +217,6 @@ class Articulo extends Component {
                     })
                 });
 
-
-            // try {
-            //     const parametros = {
-            //         method: 'PUT',
-            //         headers: {
-            //             "Content-Type": "application/json"
-            //         },
-            //         body: JSON.stringify(datos)
-            //     }
-
-            //     // ejecutar la solicitud
-            //     const respuesta = await fetch(URL + '/' + id, parametros);
-            //     if (respuesta.status === 200) {
-            //         // recargar los articulos
-            //         this.props.consultarAPI();
-
-            //     }
-
-
-
-            // } catch (er) {
-            //     console.log(er);
-            //     console.log(this.props.consultarAPI());
-            //     Swal.fire({
-            //         icon: 'warning',
-            //         title: 'Error',
-            //         text: 'Ha ocurrido un error con el servidor, intente mas tarde'
-            //     })
-
-
-            // }
         }
 
 

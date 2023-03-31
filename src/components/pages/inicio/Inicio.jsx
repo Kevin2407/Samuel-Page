@@ -19,7 +19,7 @@ export default class Inicio extends Component {
     return (
       <Fragment>
         <div className="div-seccion1">
-          <Destacados destacado={this.props.destacado}></Destacados>
+          <Destacados destacado={this.props.destacado} ></Destacados>
           <NewsLetter></NewsLetter>
         </div>
         <ListaArt consultarAPI={this.props.consultarAPI} articulos={this.props.articulos} edit={false}></ListaArt>
