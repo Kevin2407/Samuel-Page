@@ -41,7 +41,7 @@ function App() {
 
 
   return (
-    <div className="container centrar">
+    <div className="container centrar" style={{wordWrap: "break-word"}}>
       <Router>
         <Navegacion></Navegacion>
         <Switch>
