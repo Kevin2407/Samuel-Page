@@ -3,7 +3,7 @@
 .div-img-nota{
     display:flex;
     justify-content: flex-start;
-    width: 100%;
+    width: 90%;
 }
 
 .article-nota{
@@ -19,7 +19,7 @@
     justify-content: flex-start;
     flex-direction: column;
     padding: 1px 20px 10px 15px;
-    width: 70%;
+    width: 76%;
 }
 
 .section-nota > a {

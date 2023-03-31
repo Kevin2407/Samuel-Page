@@ -4,7 +4,8 @@ import './articulo.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import * as iconoSolid from '@fortawesome/free-solid-svg-icons';
+import * as iconoRegular from '@fortawesome/free-regular-svg-icons';
 
 
 
@@ -13,38 +14,52 @@ class Articulo extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            b: false
+        }
+    }
+
+    componentDidMount() {
+
+        let img = new Image();
+        img.src = this.props.articulo.imagen;
+        img.onload = () => {
+            this.setState({ b: true });
+
+        }
+        img.onerror = () => {
+            this.setState({ b: false });
+        }
+
+
     }
 
 
     render() {
 
 
-        const imgComponent = ()=>{
+        const imgComponent = () => {
 
-            fetch(new Request(this.props.articulo.imagen, {method: 'HEAD', mode: 'no-cors'}))
-            .then((response)=> {
-                console.log(response);
-                console.log(this.props.articulo.imagen);
-            })
-            .catch((error)=> {
-                console.log(error);
-            });
+            if (this.state.b) {
+                return (
+                    <div className='div-img'><img src={this.props.articulo.imagen} alt='imagen de nota' /></div>
+                )
+            }
 
-            return (
-                <div className='div-img'><img src={this.props.articulo.imagen} alt='imagen de nota' /></div>
-            )
         }
 
-        const mostrar = (admin) => {
-            
+        const componenteBotones = (admin) => {
+
             if (admin) {
                 return (
-                <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'center' }}>
-                    <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0" }} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
-                    <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={faTrash} style={{ color: "#f5f5f5", }} /></button>
-                </div>
+                    <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'center' }}>
+                        <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0" }} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={iconoSolid.faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
+                        <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={iconoSolid.faTrash} style={{ color: "#f5f5f5", }} /></button>
+                        <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => destacar(this.props.articulo._id)}><FontAwesomeIcon icon={ this.props.articulo.destacada ? iconoSolid.faStar : iconoRegular.faStar } style={{ color: "#f5f5f5", }} /></button>
+                    </div>
                 )
-                        }
+            }
         }
 
         const borrar = (id) => {
@@ -109,31 +124,80 @@ class Articulo extends Component {
 
         }
 
+        const destacar = async(id) => {
 
-        return (
+            const URL = process.env.REACT_APP_API_URL + '/' + id;
 
-            <article className='article-nota'>
-                <div className='div-img-nota'>
-                    {
-                        imgComponent()
-                    }
-                    <section className='section-nota'>
-                        <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
-                        <div>
-                            <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
-                        </div>
-                    </section>
+            // crear objeto a enviar
+            const datos = {
+                titulo: this.props.articulo.titulo,
+                imagen: this.props.articulo.imagen,
+                contenido: this.props.articulo.contenido,
+                destacada: true
+            }
 
-                </div>
+            console.log(datos)
 
-                {
-                    mostrar(this.props.edit)
+
+
+            // enviar el objeto a la api, operacion POST
+            try {
+                const parametros = {
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                }
+
+                // ejecutar la solicitud
+                const respuesta = await fetch(URL + '/' + id, parametros);
+                if (respuesta.status === 200) {
+                    // recargar los articulos
+                    this.props.consultarAPI();
+
                 }
 
 
-            </article>
-        );
-    }
-}
 
-export default Articulo;
+            } catch (er) {
+                console.log(er);
+                console.log(this.props.consultarAPI());
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Error',
+                    text: 'Ha ocurrido un error con el servidor, intente mas tarde'
+                })
+
+
+            }
+        }
+
+
+            return (
+
+                <article className='article-nota'>
+                    <div className='div-img-nota'>
+                        {
+                            imgComponent()
+                        }
+                        <section className='section-nota'>
+                            <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
+                            <div>
+                                <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    {
+                        componenteBotones(this.props.edit)
+                    }
+
+
+                </article>
+            );
+        }
+    }
+
+        export default Articulo;

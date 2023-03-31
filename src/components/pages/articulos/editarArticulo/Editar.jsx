@@ -13,6 +13,7 @@ function Editar(props) {
     const [titulo, setTitulo] = useState("");
     const [imagen, setImagen] = useState("");
     const [contenido, setContenido] = useState("");
+    const [destacada, setDestacada] = useState(false);
     const [articuloEditar, setArticuloEditar] = useState({});
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -32,6 +33,7 @@ function Editar(props) {
                     console.log(articuloEditar)
                     setTitulo(articuloEditar.titulo);
                     setContenido(articuloEditar.contenido);
+                    setDestacada(articuloEditar.destacada);
                     setImagen(articuloEditar.imagen);
                 }
             } catch (e) {
@@ -86,8 +88,10 @@ function Editar(props) {
                 const datos = {
                     titulo: titulo,
                     imagen: imagen,
-                    contenido: contenido
+                    contenido: contenido,
+                    destacada: destacada
                 }
+
 
 
                 // enviar el objeto a la api, operacion POST

@@ -12,6 +12,7 @@ function Agregar(props) {
     const [titulo, setTitulo] = useState("");
     const [imagen, setImagen] = useState("");
     const [contenido, setContenido] = useState('<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>');
+    const [destacada, setDestacada] = useState(false);
     const [error, setError] = useState(false);
     const fecha = new Date();
     const [fechaHoy, setFechaHoy] = useState(`${fecha.getDay()} ${fecha.getDate()} de ${fecha.getMonth()} de ${fecha.getFullYear}`);
@@ -63,6 +64,7 @@ function Agregar(props) {
                     titulo: titulo,
                     imagen: imagen,
                     contenido: contenido,
+                    destacada: destacada,
                     fecha: fecha
                 }
 

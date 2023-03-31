@@ -13,9 +13,9 @@ class ListaArticulosEdit extends Component {
             <div>
                 <ul style={{ listStyle: 'none', margin: '0', marginTop: '30px', marginBottom: '30px', padding: '0' }}>
                     {
-                        this.props.articulos.map((item) => {
+                        this.props.articulos.map((item,key) => {
                             return (
-                                <div className='border'>
+                                <div className='border' key={key}>
                                     <li className='d-flex'>
                                         <Articulo consultarAPI={this.props.consultarAPI} articulo={item} edit={this.props.edit}></Articulo>
                                     </li>
