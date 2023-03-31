@@ -17,6 +17,7 @@ import Busqueda from './components/pages/articulos/Busqueda'
 function App() {
 
   const [articulos,setArticulos] = useState([]);
+  const [artDestacado,setArtDestacado] = useState({});
   const URL = process.env.REACT_APP_API_URL;
 
   useEffect(
@@ -29,6 +30,8 @@ function App() {
         const consulta =  await fetch(URL);
         const respuesta = await consulta.json();
         setArticulos(respuesta);
+        setArtDestacado(respuesta.find(art=> art.destacada));
+        console.log(artDestacado)
         return respuesta;
       }catch(error){
         console.log(error);

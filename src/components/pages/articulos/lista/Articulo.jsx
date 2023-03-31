@@ -132,7 +132,7 @@ class Articulo extends Component {
                 allowOutsideClick: false,
                 didOpen: () => {
                     Swal.showLoading();
-                }
+                },
             })
 
             ventanaCargando.fire();
@@ -144,12 +144,15 @@ class Articulo extends Component {
             let datos = {}
 
             if (this.props.articulo.destacada) {
-                datos = {
-                    titulo: this.props.articulo.titulo,
-                    imagen: this.props.articulo.imagen,
-                    contenido: this.props.articulo.contenido,
-                    destacada: false
-                }
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Articulo ya destacado',
+                    text: 'El articulo ya esta destacado, si desea quitarlo del titular del inicio, destaque otro articulo',
+                    didOpen: () => {
+                        Swal.hideLoading();
+                    },
+                })
+                return;
             } else {
                 datos = {
                     titulo: this.props.articulo.titulo,
@@ -174,24 +177,33 @@ class Articulo extends Component {
                 .then(response => {
                     console.log(response.status)
                     if (response.status === 200) {
-                        this.props.consultarAPI();
                         this.props.consultarAPI()
                         .then((arreglo)=>{
                             let datosArticulos = {};
                             arreglo.map(async articulo => {
-                                datosArticulos = {
-                                    titulo: articulo.titulo,
-                                    imagen: articulo.imagen,
-                                    contenido: articulo.contenido,
-                                    destacada: false
+
+                                if(articulo._id != id && articulo.destacada){
+
+                                    datosArticulos = {
+                                        titulo: articulo.titulo,
+                                        imagen: articulo.imagen,
+                                        contenido: articulo.contenido,
+                                        destacada: false
+                                    }
+                                    console.log(articulo)
+                                    await fetch(URL + '/' + articulo._id, {
+                                        method: 'PUT',
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify(datosArticulos)
+                                    })
+                                    
+                                    
+                                    await this.props.consultarAPI();
+                                    ventanaCargando.close();
+
                                 }
-                                await fetch(URL + '/' + articulo._id, {
-                                    method: 'PUT',
-                                    headers: {
-                                        "Content-Type": "application/json"
-                                    },
-                                    body: JSON.stringify(datosArticulos)
-                                })
 
                             })
                         })
@@ -207,7 +219,6 @@ class Articulo extends Component {
                     })
                 });
 
-                ventanaCargando.close();
 
             // try {
             //     const parametros = {
