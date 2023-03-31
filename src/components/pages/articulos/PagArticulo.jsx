@@ -32,22 +32,24 @@ export default function PagArticulo(props) {
               const contenido = parse(articuloSelect.contenido);
               console.log(contenido)
               return (
-                <Fragment>
+                <div className='contenedor-pagArticulo'>
 
                   <div className='mt-4'><h1 className='tamanio-titulo'>{articuloSelect.titulo}</h1></div>
                   <div className='my-3'><p style={{fontSize: 'small'}}>{articuloSelect.fecha}</p></div>
                   <div><p>{contenido}</p></div>
 
-                </Fragment>
+                </div>
 
 
               )
             } else {
 
               return (
-                <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-                </Spinner>
+                <div className='d-flex justify-content-center w-100 mt-5'>
+                  <Spinner animation="border" role="status" >
+                    <span className="visually-hidden">Loading...</span>
+                  </Spinner>
+                </div>
               );
             }
 
