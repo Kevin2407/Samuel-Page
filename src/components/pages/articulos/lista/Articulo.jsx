@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import foto from './default-seccion2.png';
+import dft from './default-seccion2.png';
 import './articulo.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -16,9 +16,24 @@ class Articulo extends Component {
     }
 
 
-
-
     render() {
+
+
+        const imgComponent = ()=>{
+
+            fetch(new Request(this.props.articulo.imagen, {method: 'HEAD', mode: 'no-cors'}))
+            .then((response)=> {
+                console.log(response);
+                console.log(this.props.articulo.imagen);
+            })
+            .catch((error)=> {
+                console.log(error);
+            });
+
+            return (
+                <div className='div-img'><img src={this.props.articulo.imagen} alt='imagen de nota' /></div>
+            )
+        }
 
         const mostrar = (admin) => {
             
@@ -99,10 +114,9 @@ class Articulo extends Component {
 
             <article className='article-nota'>
                 <div className='div-img-nota'>
-                    <div className='div-img'>
-                        {/* <img src={this.props.articulo.imagen} alt="imagen de nota" /> */}
-                        <img src={foto} alt="imagen de nota" />
-                    </div>
+                    {
+                        imgComponent()
+                    }
                     <section className='section-nota'>
                         <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
                         <div>

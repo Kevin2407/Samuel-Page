@@ -10,8 +10,8 @@ function Agregar(props) {
 
     const URL = process.env.REACT_APP_API_URL;
     const [titulo, setTitulo] = useState("");
-    const [img, setImg] = useState("");
-    const [contenido, setContenido] = useState("<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>");
+    const [imagen, setImagen] = useState("");
+    const [contenido, setContenido] = useState('<h1><strong>Aca podes escribir el articulo y editarlo.</strong></h1>');
     const [error, setError] = useState(false);
     const fecha = new Date();
     const [fechaHoy, setFechaHoy] = useState(`${fecha.getDay()} ${fecha.getDate()} de ${fecha.getMonth()} de ${fecha.getFullYear}`);
@@ -61,6 +61,7 @@ function Agregar(props) {
                 // crear objeto a enviar
                 const datos = {
                     titulo: titulo,
+                    imagen: imagen,
                     contenido: contenido,
                     fecha: fecha
                 }
@@ -92,7 +93,7 @@ function Agregar(props) {
 
                         //   limpiar formulario
                         setTitulo('');
-                        setImg('');
+                        setImagen('');
                         setContenido('');
                         setFechaHoy(`${fecha.getDay()} ${fecha.getDate()} de ${fecha.getMonth()} de ${fecha.getFullYear}`);
 
@@ -128,7 +129,7 @@ function Agregar(props) {
                 </Form.Group>
                 <Form.Group className='mb-5'>
                     <Form.Label>Imagen del articulo</Form.Label>
-                    <Form.Control type="text" placeholder="URL de la imagen" onChange={(e) => setImg(e.target.value)} />
+                    <Form.Control type="text" placeholder="URL de la imagen" onChange={(e) => setImagen(e.target.value)} />
                 </Form.Group>
                 <Form.Group>
                     <Editor

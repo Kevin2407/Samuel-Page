@@ -11,6 +11,7 @@ function Editar(props) {
 
     const URL = process.env.REACT_APP_API_URL;
     const [titulo, setTitulo] = useState("");
+    const [imagen, setImagen] = useState("");
     const [contenido, setContenido] = useState("");
     const [articuloEditar, setArticuloEditar] = useState({});
     const [error, setError] = useState(false);
@@ -31,6 +32,7 @@ function Editar(props) {
                     console.log(articuloEditar)
                     setTitulo(articuloEditar.titulo);
                     setContenido(articuloEditar.contenido);
+                    setImagen(articuloEditar.imagen);
                 }
             } catch (e) {
                 console.log(e)
@@ -83,6 +85,7 @@ function Editar(props) {
                 // crear objeto a enviar
                 const datos = {
                     titulo: titulo,
+                    imagen: imagen,
                     contenido: contenido
                 }
 
@@ -113,6 +116,7 @@ function Editar(props) {
 
                         //   limpiar formulario
                         setTitulo('');
+                        setImagen('');
                         setContenido('');
 
 
@@ -140,9 +144,13 @@ function Editar(props) {
     return (
         <div>
             <Form className='mt-5'>
-                <Form.Group className='mb-5'>
+                <Form.Group className='mb-2'>
                     <Form.Label>Titulo del articulo</Form.Label>
                     <Form.Control type="text" placeholder="Titulo" onChange={(e) => setTitulo(e.target.value)} defaultValue={articuloEditar.titulo} />
+                </Form.Group>
+                <Form.Group className='mb-5'>
+                    <Form.Label>Imagen del articulo</Form.Label>
+                    <Form.Control type="text" placeholder="URL de la imagen" onChange={(e) => setImagen(e.target.value)} defaultValue={articuloEditar.imagen}/>
                 </Form.Group>
                 <Form.Group>
                     <Editor
