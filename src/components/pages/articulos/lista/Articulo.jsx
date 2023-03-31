@@ -16,7 +16,8 @@ class Articulo extends Component {
         super(props);
 
         this.state = {
-            b: false
+            b: false,
+            loading: false
         }
     }
 
@@ -56,7 +57,7 @@ class Articulo extends Component {
                     <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'center' }}>
                         <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0" }} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={iconoSolid.faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
                         <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={iconoSolid.faTrash} style={{ color: "#f5f5f5", }} /></button>
-                        <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => destacar(this.props.articulo._id)}><FontAwesomeIcon icon={ this.props.articulo.destacada ? iconoSolid.faStar : iconoRegular.faStar } style={{ color: "#f5f5f5", }} /></button>
+                        <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => destacar(this.props.articulo._id)}><FontAwesomeIcon icon={this.props.articulo.destacada ? iconoSolid.faStar : iconoRegular.faStar} style={{ color: "#f5f5f5", }} /></button>
                     </div>
                 )
             }
@@ -124,80 +125,147 @@ class Articulo extends Component {
 
         }
 
-        const destacar = async(id) => {
+        const destacar = async (id) => {
 
-            const URL = process.env.REACT_APP_API_URL + '/' + id;
+            const ventanaCargando = Swal.mixin({
+                title: 'Cargando...',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            })
+
+            ventanaCargando.fire();
+
+
+            const URL = process.env.REACT_APP_API_URL;
 
             // crear objeto a enviar
-            const datos = {
-                titulo: this.props.articulo.titulo,
-                imagen: this.props.articulo.imagen,
-                contenido: this.props.articulo.contenido,
-                destacada: true
+            let datos = {}
+
+            if (this.props.articulo.destacada) {
+                datos = {
+                    titulo: this.props.articulo.titulo,
+                    imagen: this.props.articulo.imagen,
+                    contenido: this.props.articulo.contenido,
+                    destacada: false
+                }
+            } else {
+                datos = {
+                    titulo: this.props.articulo.titulo,
+                    imagen: this.props.articulo.imagen,
+                    contenido: this.props.articulo.contenido,
+                    destacada: true
+                }
             }
 
-            console.log(datos)
 
 
 
             // enviar el objeto a la api, operacion POST
-            try {
-                const parametros = {
-                    method: 'PUT',
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(datos)
-                }
 
-                // ejecutar la solicitud
-                const respuesta = await fetch(URL + '/' + id, parametros);
-                if (respuesta.status === 200) {
-                    // recargar los articulos
-                    this.props.consultarAPI();
+            await fetch(URL + '/' + id, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            })
+                .then(response => {
+                    console.log(response.status)
+                    if (response.status === 200) {
+                        this.props.consultarAPI();
+                        this.props.consultarAPI()
+                        .then((arreglo)=>{
+                            let datosArticulos = {};
+                            arreglo.map(async articulo => {
+                                datosArticulos = {
+                                    titulo: articulo.titulo,
+                                    imagen: articulo.imagen,
+                                    contenido: articulo.contenido,
+                                    destacada: false
+                                }
+                                await fetch(URL + '/' + articulo._id, {
+                                    method: 'PUT',
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify(datosArticulos)
+                                })
 
-                }
-
-
-
-            } catch (er) {
-                console.log(er);
-                console.log(this.props.consultarAPI());
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Error',
-                    text: 'Ha ocurrido un error con el servidor, intente mas tarde'
-                })
-
-
-            }
-        }
-
-
-            return (
-
-                <article className='article-nota'>
-                    <div className='div-img-nota'>
-                        {
-                            imgComponent()
-                        }
-                        <section className='section-nota'>
-                            <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
-                            <div>
-                                <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
-                            </div>
-                        </section>
-
-                    </div>
-
-                    {
-                        componenteBotones(this.props.edit)
+                            })
+                        })
+                        
                     }
+                })
+                .catch(error => {
+                    console.log(error);
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Error',
+                        text: 'Ha ocurrido un error con el servidor, intente mas tarde'
+                    })
+                });
+
+                ventanaCargando.close();
+
+            // try {
+            //     const parametros = {
+            //         method: 'PUT',
+            //         headers: {
+            //             "Content-Type": "application/json"
+            //         },
+            //         body: JSON.stringify(datos)
+            //     }
+
+            //     // ejecutar la solicitud
+            //     const respuesta = await fetch(URL + '/' + id, parametros);
+            //     if (respuesta.status === 200) {
+            //         // recargar los articulos
+            //         this.props.consultarAPI();
+
+            //     }
 
 
-                </article>
-            );
+
+            // } catch (er) {
+            //     console.log(er);
+            //     console.log(this.props.consultarAPI());
+            //     Swal.fire({
+            //         icon: 'warning',
+            //         title: 'Error',
+            //         text: 'Ha ocurrido un error con el servidor, intente mas tarde'
+            //     })
+
+
+            // }
         }
-    }
 
-        export default Articulo;
+
+        return (
+
+            <article className='article-nota'>
+                <div className='div-img-nota'>
+                    {
+                        imgComponent()
+                    }
+                    <section className='section-nota'>
+                        <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
+                        <div>
+                            <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
+                        </div>
+                    </section>
+
+                </div>
+
+                {
+                    componenteBotones(this.props.edit)
+                }
+
+
+            </article>
+        );
+    }
+}
+
+export default Articulo;

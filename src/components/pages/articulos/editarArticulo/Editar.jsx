@@ -30,7 +30,6 @@ function Editar(props) {
                 if (respuesta.status === 200) {
                     const resultado = await respuesta.json();
                     setArticuloEditar(resultado);
-                    console.log(articuloEditar)
                     setTitulo(articuloEditar.titulo);
                     setContenido(articuloEditar.contenido);
                     setDestacada(articuloEditar.destacada);
@@ -62,9 +61,6 @@ function Editar(props) {
 
 
         if (editorRef.current) {
-            console.log(editorRef.current.getContent());
-            console.log(contenido);
-
 
             if (articuloEditar.titulo.trim() === "" || articuloEditar.contenido.trim() === '') {
                 // mostrar cartel de error

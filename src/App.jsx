@@ -29,8 +29,10 @@ function App() {
         const consulta =  await fetch(URL);
         const respuesta = await consulta.json();
         setArticulos(respuesta);
+        return respuesta;
       }catch(error){
         console.log(error);
+        return error;
       }
     }
 
