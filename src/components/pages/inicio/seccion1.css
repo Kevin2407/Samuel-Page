@@ -14,6 +14,7 @@
 .div-destacada{
     width: 70%;
     height: 100%;
+    box-shadow: 0 0 20px 0 rgb(51 51 51 / 90%);
     position: relative;
     display: flex;
     justify-content: center;
