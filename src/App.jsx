@@ -31,7 +31,6 @@ function App() {
       try{
         const consulta =  await fetch(URL);
         const respuesta = await consulta.json();
-        console.log(respuesta)
         setArticulos(respuesta);
         setArtDestacado(respuesta.find(art=> art.destacada));
         return respuesta;
@@ -64,6 +63,8 @@ function App() {
             <Inicio consultarAPI={consultarAPI} articulos={articulos} destacado={artDestacado}></Inicio>
           </Route>
           <Route exact path='/administracion'>
+            {/* este apartado revisa si la variable de control de sesion del state esta en true, y si lo esta
+            permite ingresar a administracion */}
             {
               ()=>{
                 if(enSesion){
@@ -73,8 +74,6 @@ function App() {
                 }
               }
             }
-            {/* <Seguridad setEnSesion={setEnSesion}></Seguridad> */}
-            {/* <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion> */}
           </Route>
           <Route exact path='/administracion/agregar'>
             <Agregar consultarAPI={consultarAPI} ></Agregar>

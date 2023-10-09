@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import './articulos.css';
 
 
@@ -9,8 +10,16 @@ const Seguridad = ({setEnSesion}) => {
 
     const ingresar=(e)=>{
         e.preventDefault();
-        if(emailIngresado == 'kevmartin2001@gmail.com' && contraIngresada == 'admin')
-        setEnSesion(true);
+        if(emailIngresado == 'kevmartin2001@gmail.com' && contraIngresada == 'admin'){
+            setEnSesion(true);
+        }else{
+            Swal.fire({
+                title: 'Error!',
+                text: 'Email o contraseña invalidos',
+                icon: 'error',
+                confirmButtonText: 'Entiendo'
+            })
+        }
         
     }
 
