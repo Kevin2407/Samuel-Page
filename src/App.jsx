@@ -6,11 +6,12 @@ import {
 } from "react-router-dom";
 import { Navegacion } from "./components/common/header/Navegacion";
 import Inicio from "./components/pages/inicio/Inicio";
-import Administracion from "./components/pages/articulos/Administrar";
+import Administracion from "./components/pages/articulos/Administracion";
 import Agregar from "./components/pages/articulos/agregarArticulo/Agregar";
 import Editar from "./components/pages/articulos/editarArticulo/Editar";
 import PagArticulo from "./components/pages/articulos/PagArticulo";
 import Busqueda from './components/pages/articulos/Busqueda'
+import Seguridad from "./components/pages/articulos/Seguridad";
 
 
 
@@ -18,6 +19,7 @@ function App() {
 
   const [articulos,setArticulos] = useState([]);
   const [artDestacado,setArtDestacado] = useState({});
+  const [enSesion,setEnSesion] = useState(false);
   const URL = process.env.REACT_APP_API_URL;
 
   useEffect(
@@ -33,11 +35,23 @@ function App() {
         setArticulos(respuesta);
         setArtDestacado(respuesta.find(art=> art.destacada));
         return respuesta;
+
+              /*  FORZAR ERROR
+              let response = await fetch('https://api.noexiste123.com/data');
+              if (!response.ok) {
+                  throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              let data = await response.json();
+              return data; 
+              */
+            
       }catch(error){
         console.log(error);
         return error;
       }
     }
+
+
 
 
 
@@ -50,7 +64,17 @@ function App() {
             <Inicio consultarAPI={consultarAPI} articulos={articulos} destacado={artDestacado}></Inicio>
           </Route>
           <Route exact path='/administracion'>
-            <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>
+            {
+              ()=>{
+                if(enSesion){
+                  return (<Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>);
+                }else{
+                  return (<Seguridad setEnSesion={setEnSesion}></Seguridad>);
+                }
+              }
+            }
+            {/* <Seguridad setEnSesion={setEnSesion}></Seguridad> */}
+            {/* <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion> */}
           </Route>
           <Route exact path='/administracion/agregar'>
             <Agregar consultarAPI={consultarAPI} ></Agregar>
