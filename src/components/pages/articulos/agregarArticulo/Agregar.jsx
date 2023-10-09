@@ -50,6 +50,7 @@ function Agregar(props) {
                     icon: 'error',
                     title: 'Error',
                     text: 'El articulo debe tener un titulo y un contenido',
+                    confirmButtonColor: '#006dc0',
                     didOpen: () => {
                         Swal.hideLoading();
                     }
@@ -86,12 +87,15 @@ function Agregar(props) {
                         props.consultarAPI();
                         // redireccionar a administracion
                         props.history.push('/administracion');
+                        
                         // cartel de exito
-                        await Swal.fire(
-                            'Perfecto!',
-                            'El articulo a sido publicado',
-                            'Cerrar'
-                        )
+                        await Swal.fire({
+                            title: 'Perfecto!',
+                            text: 'El artículo ha sido publicado',
+                            // icon: 'success',
+                            confirmButtonText: 'Cerrar',
+                            confirmButtonColor: '#006dc0'
+                        });
 
                         //   limpiar formulario
                         setTitulo('');
@@ -111,6 +115,7 @@ function Agregar(props) {
                     Swal.fire({
                         icon: 'warning',
                         title: 'Error',
+                        confirmButtonColor: '#006dc0',
                         text: 'Ha ocurrido un error con el servidor, intente mas tarde',
                         didOpen: () => {
                             Swal.hideLoading();

@@ -108,11 +108,13 @@ function Editar(props) {
                         // redireccionar a administracion
                         props.history.push('/administracion');
                         // cartel de exito
-                        await Swal.fire(
-                            'Perfecto!',
-                            'El articulo a sido editado',
-                            'Cerrar'
-                        )
+                        await Swal.fire({
+                            title: 'Perfecto!',
+                            text: 'El artículo ha sido editado',
+                            // icon: 'success',
+                            confirmButtonText: 'Cerrar',
+                            confirmButtonColor: '#006dc0'
+                        });
 
                         //   limpiar formulario
                         setTitulo('');

@@ -17,7 +17,8 @@ const Seguridad = ({setEnSesion}) => {
                 title: 'Error!',
                 text: 'Email o contraseña invalidos',
                 icon: 'error',
-                confirmButtonText: 'Entiendo'
+                confirmButtonText: 'Entiendo',
+                confirmButtonColor: '#006dc0'
             })
         }
         

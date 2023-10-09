@@ -89,11 +89,14 @@ class Articulo extends Component {
 
                         if (response.status === 200) {
                             // mostrar cartel de prod. eliminado
-                            Swal.fire(
-                                'Borrado!',
-                                'El producto ha sido borrado.',
-                                'success'
-                            )
+
+                            Swal.fire({
+                                title: 'Borrado!',
+                                text: 'El producto ha sido borrado',
+                                icon: 'success',
+                                confirmButtonText: 'Cerrar',
+                                confirmButtonColor: '#006dc0'
+                            });
 
                             // actualizar los datos
                             this.props.consultarAPI();
