@@ -26,7 +26,7 @@ export function Navegacion() {
   }
 
   const buscar = () => {
-    if (texto != '') {
+    if (texto !== '') {
       history.push('/busqueda/' + texto);
       vaciarInput();
     }
