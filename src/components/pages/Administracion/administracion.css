@@ -23,9 +23,9 @@
 
 @media (max-width: 576px) {
     .admin-btn {
-        width: 6vw;
-        height: 6vw;
-        display: flex;
+        width: 12vw;
+        height: 12vw;
+        display: flex !important;
         justify-content: center;
         align-items: center;
         margin: 0 !important;
@@ -35,8 +35,8 @@
     .admin-btn>svg {
         margin: 0 !important;
         padding: 0 !important;
-        width: 3vw;
-        height: 3vw;
+        width: 8vw;
+        height: 8vw;
     }
 
     .admin-btn>svg>path {

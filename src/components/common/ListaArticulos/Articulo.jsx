@@ -235,9 +235,8 @@ class Articulo extends Component {
                         imgComponent()
                     }
                     <section className='section-nota'>
-                        <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
+                        <Link to={`/articulo/${this.props.articulo._id}`}>{this.props.articulo.titulo}</Link>
                         <div>
-                            {/* {this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")} */}
                             {
                                 this.props.sinEtiquetas(this.props.articulo.contenido)
                             }
