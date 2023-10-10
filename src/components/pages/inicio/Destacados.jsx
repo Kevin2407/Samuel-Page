@@ -5,7 +5,14 @@ import foto from './foto.jpg';
 function Destacados(props) {
 
   const [imagenDestacada, setImagenDestacada] = useState(props.destacado.imagen);
-  const contenidoSinEtiquetas = props.destacado.contenido ? props.destacado.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "") : "";
+
+  function decodeHtmlEntities(str) {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = str;
+    return textArea.value.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "");
+}
+
+  const contenidoSinEtiquetas = props.destacado.contenido ? decodeHtmlEntities(props.destacado.contenido) : "";
 
   
   const img = new Image();
