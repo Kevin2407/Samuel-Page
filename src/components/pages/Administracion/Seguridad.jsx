@@ -26,7 +26,7 @@ const Seguridad = ({setEnSesion}) => {
 
   return (
     <>
-        <div class="container m-5 pb-5">
+        <div class="container my-5 pb-5">
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <div class="card">

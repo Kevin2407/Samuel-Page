@@ -104,23 +104,27 @@ class Articulo extends Component {
 
                         } else {
 
-                            Swal.fire(
-                                'Se produjo un error!',
-                                'Intentelo nuevamente',
-                                'error'
-                            )
-
+                            // cartel de error al borrar
+                            Swal.fire({
+                                title: 'Se produjo un error!',
+                                text: 'Intentelo nuevamente',
+                                icon: 'error',
+                                confirmButtonText: 'Cerrar',
+                                confirmButtonColor: '#006dc0'
+                            });
 
                         }
 
                     } catch (error) {
                         console.log(error);
 
-                        Swal.fire(
-                            'Se produjo un error!',
-                            'Intentelo en unos minutos',
-                            'error'
-                        )
+                        Swal.fire({
+                            title: 'Se produjo un error!',
+                            text: 'Intentelo en unos minutos',
+                            icon: 'error',
+                            confirmButtonText: 'Cerrar',
+                            confirmButtonColor: '#006dc0'
+                        });
                     }
                 }
             })
@@ -216,7 +220,8 @@ class Articulo extends Component {
                     Swal.fire({
                         icon: 'warning',
                         title: 'Error',
-                        text: 'Ha ocurrido un error con el servidor, intente mas tarde'
+                        text: 'Ha ocurrido un error con el servidor, intente mas tarde',
+                        confirmButtonColor: '#006dc0'
                     })
                 });
 

@@ -6,13 +6,10 @@
     font-size: 5vw;
 }
 
-.contenedor-pagArticulo {
-    
-}
 
 .contenedor-pagArticulo {
     position: relative;  /* Asegura que el contenedor actúa como referencia para elementos posicionados. */
-    padding: 20px 5%;      /* Espacio en los bordes*/
+    padding: 20px 7%;      /* Espacio en los bordes*/
 }
 
 .contenedor-pagArticulo > * {       /* Selecciona todos los elementos directos dentro de .contenedor*/
