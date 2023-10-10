@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './inicio.css';
 import foto from './foto.jpg';
 

@@ -10,7 +10,7 @@ const Seguridad = ({setEnSesion}) => {
 
     const ingresar=(e)=>{
         e.preventDefault();
-        if(emailIngresado == 'admin@a' && contraIngresada == 'admin'){
+        if(emailIngresado === 'admin@a' && contraIngresada === 'admin'){
             setEnSesion(true);
         }else{
             Swal.fire({

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import dft from './default-seccion2.png';
 import './articulo.css';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
