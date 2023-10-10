@@ -19,7 +19,7 @@ class ListaArticulosEdit extends Component {
                                 return (
                                     <div className='border' key={key}>
                                         <li className='d-flex'>
-                                            <Articulo consultarAPI={this.props.consultarAPI} articulo={item} edit={this.props.edit}></Articulo>
+                                            <Articulo consultarAPI={this.props.consultarAPI} articulo={item} edit={this.props.edit} sinEtiquetas={this.props.sinEtiquetas}></Articulo>
                                         </li>
                                     </div>
                                 )

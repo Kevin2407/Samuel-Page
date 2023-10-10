@@ -6,13 +6,8 @@ function Destacados(props) {
 
   const [imagenDestacada, setImagenDestacada] = useState(props.destacado.imagen);
 
-  function decodeHtmlEntities(str) {
-    var textArea = document.createElement('textarea');
-    textArea.innerHTML = str;
-    return textArea.value.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "");
-}
 
-  const contenidoSinEtiquetas = props.destacado.contenido ? decodeHtmlEntities(props.destacado.contenido) : "";
+  const contenidoSinEtiquetas = props.destacado.contenido ? props.sinEtiquetas(props.destacado.contenido) : "";
 
   
   const img = new Image();

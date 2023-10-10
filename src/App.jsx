@@ -51,6 +51,13 @@ function App() {
       }
     }
 
+    // funcion para ingresar un texto con etiquetas html de formato, y que salga limpio sin etiquetas
+    function decodeHtmlEntities(str) {
+      var textArea = document.createElement('textarea');
+      textArea.innerHTML = str;
+      return textArea.value.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "");
+    }
+
 
 
 
@@ -61,14 +68,14 @@ function App() {
         <Navegacion></Navegacion>
         <Switch>
           <Route exact path='/'>
-            <Inicio consultarAPI={consultarAPI} articulos={articulos} destacado={artDestacado}></Inicio>
+            <Inicio consultarAPI={consultarAPI} articulos={articulos} destacado={artDestacado} sinEtiquetas={decodeHtmlEntities} ></Inicio>
           </Route>
           <Route exact path='/administracion'>
             {/* este apartado revisa si la variable de control de sesion del state esta en true, y si lo esta
             permite ingresar a administracion */}
             {
               enSesion ?
-                <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>
+                <Administracion consultarAPI={consultarAPI} articulos={articulos} sinEtiquetas={decodeHtmlEntities}></Administracion>
               :
                 <Seguridad setEnSesion={setEnSesion}></Seguridad>
             }
@@ -83,7 +90,7 @@ function App() {
             <PagArticulo consultarAPI={consultarAPI}  articulos={articulos}></PagArticulo>
           </Route>
           <Route exact path='/busqueda/:filtro'>
-            <Busqueda consultarAPI={consultarAPI}  articulos={articulos}></Busqueda>
+            <Busqueda consultarAPI={consultarAPI}  articulos={articulos} sinEtiquetas={decodeHtmlEntities}></Busqueda>
           </Route>
         </Switch>
       </Router>

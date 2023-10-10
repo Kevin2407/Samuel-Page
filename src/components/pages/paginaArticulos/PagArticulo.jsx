@@ -6,6 +6,22 @@ import './pagArticulo.css';
 
 
 
+function formatearFecha(fechaString) {
+  // Crear un objeto Date con la fecha proporcionada
+  const fecha = new Date(fechaString);
+  
+  // Opciones de formato
+  const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  
+  // Convertir fecha a formato legible en español
+  let fechaEsp = fecha.toLocaleDateString('es-ES', opciones);
+
+  // pasar la primera letra a mayuscula
+  fechaEsp = fechaEsp.charAt(0).toUpperCase() + fechaEsp.slice(1).toLowerCase();
+
+  // devuelvo el texto completamnete formateado
+  return fechaEsp;
+}
 
 
 export default function PagArticulo(props) {
@@ -30,12 +46,12 @@ export default function PagArticulo(props) {
 
   if (articuloSelect.titulo && articuloSelect.fecha && articuloSelect.contenido) {
       const contenido = parse(articuloSelect.contenido);
-      console.log(contenido)
+      console.log(articuloSelect.fecha)
 
       return (
             <div className='contenedor-pagArticulo'>
                 <div className='mt-4'><h1 className='tamanio-titulo'>{articuloSelect.titulo}</h1></div>
-                <div className='my-3'><p style={{fontSize: 'small'}}>{articuloSelect.fecha}</p></div>
+                <div className='my-3'><p style={{fontSize: 'small'}}>{formatearFecha(articuloSelect.fecha)}</p></div>
                 <div>{contenido}</div>
             </div>
 

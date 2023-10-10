@@ -8,7 +8,8 @@ export default function Busqueda(props) {
   const { filtro } = useParams();
 
   
-    const buscado = props.articulos.filter( art => art.titulo.toLowerCase().includes(filtro.toLowerCase()) || art.contenido.toLowerCase().includes(filtro.toLowerCase()));
+    // este filtro quita convierte lo que se va a buscar en texto sin mayusculas ni tildes, para flexibilizar el filtro
+    const buscado = props.articulos.filter( art => art.titulo.toLowerCase().includes(filtro.toLowerCase()) || props.sinEtiquetas(art.contenido).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(filtro.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")));
 
     return (
       <>
@@ -16,7 +17,7 @@ export default function Busqueda(props) {
           <h2>Articulos con la palabra: {filtro}</h2>
         </div>
         <div>
-          <ListaArticulosEdit consultarAPI={props.consultarAPI} articulos={buscado} edit={false}></ListaArticulosEdit>
+          <ListaArticulosEdit consultarAPI={props.consultarAPI} articulos={buscado} edit={false} sinEtiquetas={props.sinEtiquetas}></ListaArticulosEdit>
         </div>
       </>
     )

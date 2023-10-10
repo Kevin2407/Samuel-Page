@@ -17,7 +17,7 @@ const Administracion = (props) => {
                     </div>
                 )
             }
-            <ListaArticulosEdit consultarAPI={props.consultarAPI} articulos={props.articulos} edit={true} />
+            <ListaArticulosEdit consultarAPI={props.consultarAPI} articulos={props.articulos} edit={true} sinEtiquetas={props.sinEtiquetas}/>
         </div>
     );
 }

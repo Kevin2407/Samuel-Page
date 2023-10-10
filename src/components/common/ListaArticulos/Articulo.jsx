@@ -238,7 +238,10 @@ class Articulo extends Component {
                     <section className='section-nota'>
                         <Link to={`/articulo/${this.props.articulo._id}`} className='lead'>{this.props.articulo.titulo}</Link>
                         <div>
-                            <p>{this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")}</p>
+                            {/* {this.props.articulo.contenido.replace(/(<([^>]+)>)/ig, "").replace(/&nbsp;/g, "")} */}
+                            {
+                                this.props.sinEtiquetas(this.props.articulo.contenido)
+                            }
                         </div>
                     </section>
 
