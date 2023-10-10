@@ -13,30 +13,7 @@
     margin-bottom: 50px;
 }
 
-/* pagina articulos */
 
-.tamanio-titulo {
-    font-size: 5vw;
-}
-
-
-
-
-
-@media (max-width: 800px) {
-    .tamanio-titulo {
-        font-size: 11vw;
-    }
-    
-    .contenedor-pagArticulo iframe{
-        width: 100%;
-    }
-    .contenedor-pagArticulo img{
-        width: 100%;
-        height: auto;
-    }
-
-}
 
 @media (max-width: 768px) {
     .contenedor {
@@ -65,12 +42,6 @@
     .admin-btn>svg>path {
         margin: 0 !important;
         padding: 0 !important;
-    }
-}
-
-@media (max-width: 500px) {
-    .tamanio-titulo {
-        font-size: 15vw;
     }
 }
 

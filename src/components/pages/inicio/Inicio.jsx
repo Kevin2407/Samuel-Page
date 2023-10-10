@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import Destacados from './Destacados';
 import NewsLetter from "./NewsLetter";
-import './seccion1.css';
-import ListaArt from '../articulos/lista/ListaArticulosEdit';
+import './inicio.css';
+import ListaArt from '../../common/ListaArticulos/ListaArticulosEdit';
 
 
 

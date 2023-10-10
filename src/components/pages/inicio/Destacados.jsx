@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './seccion1.css';
+import './inicio.css';
 import foto from './foto.jpg';
 
 function Destacados(props) {
@@ -9,7 +9,7 @@ function Destacados(props) {
 
   
   const img = new Image();
-  img.src = props.destacado.imagen;
+  img.src = props.destacado.imagen ? props.destacado.imagen : foto;
   img.onload = () => {
     setImagenDestacada(img.src);
   }

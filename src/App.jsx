@@ -4,14 +4,14 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { Navegacion } from "./components/common/header/Navegacion";
+import { Navegacion } from "./components/common/header/Nav/Navegacion";
 import Inicio from "./components/pages/inicio/Inicio";
-import Administracion from "./components/pages/articulos/Administracion";
-import Agregar from "./components/pages/articulos/agregarArticulo/Agregar";
-import Editar from "./components/pages/articulos/editarArticulo/Editar";
-import PagArticulo from "./components/pages/articulos/PagArticulo";
-import Busqueda from './components/pages/articulos/Busqueda'
-import Seguridad from "./components/pages/articulos/Seguridad";
+import Administracion from "./components/pages/Administracion/Administracion";
+import Agregar from "./components/pages/agregarArticulo/Agregar";
+import Editar from "./components/pages/editarArticulo/Editar";
+import PagArticulo from "./components/pages/paginaArticulos/PagArticulo";
+import Busqueda from './components/pages/busqueda/Busqueda'
+import Seguridad from "./components/pages/Administracion/Seguridad";
 
 
 
@@ -35,17 +35,18 @@ function App() {
         setArtDestacado(respuesta.find(art=> art.destacada));
         return respuesta;
 
-              /*  FORZAR ERROR
-              let response = await fetch('https://api.noexiste123.com/data');
-              if (!response.ok) {
-                  throw new Error(`HTTP error! Status: ${response.status}`);
-              }
-              let data = await response.json();
-              return data; 
-              */
+            //  CODIGO PARA FORZAR ERROR
+              // let response = await fetch('https://api.noexiste123.com/data');
+              // if (!response.ok) {
+              //     throw new Error(`HTTP error! Status: ${response.status}`);
+              // }
+              // let data = await response.json();
+              // return data; 
+              
             
       }catch(error){
         console.log(error);
+        setArticulos(null);
         return error;
       }
     }
@@ -66,13 +67,10 @@ function App() {
             {/* este apartado revisa si la variable de control de sesion del state esta en true, y si lo esta
             permite ingresar a administracion */}
             {
-              ()=>{
-                if(enSesion){
-                  return (<Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>);
-                }else{
-                  return (<Seguridad setEnSesion={setEnSesion}></Seguridad>);
-                }
-              }
+              enSesion ?
+                <Administracion consultarAPI={consultarAPI} articulos={articulos}></Administracion>
+              :
+                <Seguridad setEnSesion={setEnSesion}></Seguridad>
             }
           </Route>
           <Route exact path='/administracion/agregar'>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
-import './articulos.css';
+import './administracion.css';
 
 
 const Seguridad = ({setEnSesion}) => {
@@ -10,7 +10,7 @@ const Seguridad = ({setEnSesion}) => {
 
     const ingresar=(e)=>{
         e.preventDefault();
-        if(emailIngresado == 'kevmartin2001@gmail.com' && contraIngresada == 'admin'){
+        if(emailIngresado == 'admin@a' && contraIngresada == 'admin'){
             setEnSesion(true);
         }else{
             Swal.fire({

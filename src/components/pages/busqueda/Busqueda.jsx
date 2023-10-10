@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react'
-import ListaArticulosEdit from './lista/ListaArticulosEdit';
+import ListaArticulosEdit from '../../common/ListaArticulos/ListaArticulosEdit';
 import { useParams } from 'react-router-dom';
 
 

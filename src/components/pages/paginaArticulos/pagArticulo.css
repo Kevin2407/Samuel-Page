@@ -1,0 +1,54 @@
+.tamanio-titulo {
+    font-size: 5vw;
+}
+
+.tamanio-titulo {
+    font-size: 5vw;
+}
+
+.contenedor-pagArticulo {
+    
+}
+
+.contenedor-pagArticulo {
+    position: relative;  /* Asegura que el contenedor actúa como referencia para elementos posicionados. */
+    padding: 20px 5%;      /* Espacio en los bordes*/
+}
+
+.contenedor-pagArticulo > * {       /* Selecciona todos los elementos directos dentro de .contenedor*/
+    max-width: 100%;    /* Asegura que el ancho del contenido no exceda el ancho del contenedor.*/
+    max-height: 100%;   /* Asegura que la altura del contenido no exceda la altura del contenedor.*/
+    overflow: hidden;   /* Oculta cualquier desbordamiento de contenido.*/
+    display: block;     /* (Opcional) Hace que los elementos se muestren como bloque.*/
+}
+
+.contenedor-pagArticulo iframe{
+    width: 100% !important;
+    height: 55vh !important;
+}
+
+.contenedor-pagArticulo img{
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 500px) {
+    .tamanio-titulo {
+        font-size: 15vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .tamanio-titulo {
+        font-size: 11vw;
+    }
+    
+    .contenedor-pagArticulo iframe{
+        width: 100vh;
+    }
+    .contenedor-pagArticulo img{
+        width: 100%;
+        height: auto;
+    }
+
+}

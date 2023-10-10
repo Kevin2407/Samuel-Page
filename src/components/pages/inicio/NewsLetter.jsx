@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './seccion1.css';
+import './inicio.css';
 
 class NewsLetter extends Component {
     render() {

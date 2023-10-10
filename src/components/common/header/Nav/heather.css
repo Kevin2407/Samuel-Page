@@ -34,7 +34,7 @@
 
 .buscador > div > input {
     border-radius: 5px 0px 0px 5px ;
-    border-width: 1px;
+    border: 1px solid rgba(31, 31, 31, 0.34);
 }
 
 .buscador > div > input:focus {
@@ -49,6 +49,7 @@
 
 .buscador > div > a:hover .btn {
     border-color:black;
+    border-width: 1px;
 }
 
 .buscador > div > a:hover .buscar {
