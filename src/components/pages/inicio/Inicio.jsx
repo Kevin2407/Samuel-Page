@@ -20,7 +20,7 @@ export default class Inicio extends Component {
       <Fragment>
         <div className="div-seccion1">
           <Destacados destacado={this.props.destacado} consultarAPI={this.props.consultarAPI}  sinEtiquetas={this.props.sinEtiquetas}></Destacados>
-          <NewsLetter></NewsLetter>
+          {/* <NewsLetter></NewsLetter> */}
         </div>
         <ListaArt consultarAPI={this.props.consultarAPI} articulos={this.props.articulos} edit={false} sinEtiquetas={this.props.sinEtiquetas}></ListaArt>
       </Fragment>

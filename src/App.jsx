@@ -18,23 +18,26 @@ import Seguridad from "./components/pages/Administracion/Seguridad";
 function App() {
 
   const [articulos,setArticulos] = useState([]);
-  const [artDestacado,setArtDestacado] = useState({});
+  const [artDestacado,setArtDestacado] = useState();
   const [enSesion,setEnSesion] = useState(false);
-  // const URL = process.env.REACT_APP_API_URL;
-  const URL = 'https://localhost:4000/api/articulos'
+  const URL = process.env.REACT_APP_API_URL;
+  // const URL = 'https://localhost:4000/api/articulos'
 
   useEffect(
     ()=> {
       consultarAPI();
     },[]);
 
+  useEffect(
+    () => {
+      consultarDestacado();
+    }, [articulos]);
+
     const consultarAPI = async ()=>{
       try{
-        console.log(URL) 
         const consulta =  await fetch(URL);
         const respuesta = await consulta.json();
         setArticulos(respuesta);
-        setArtDestacado(respuesta.find(art=> art.destacada));
         return respuesta;
 
             //  CODIGO PARA FORZAR ERROR
@@ -49,6 +52,19 @@ function App() {
       }catch(error){
         console.log(error);
         setArticulos(null);
+        return error;
+      }
+    }
+
+    const consultarDestacado = async ()=>{ 
+      try{
+        const consulta =  await fetch(URL+'/destacado');
+        const respuesta = await consulta.json();
+        const destacado = articulos.find(art => art._id === respuesta.value);
+        setArtDestacado(destacado);
+      }catch(error){
+        console.log(error);
+        setArtDestacado(null);
         return error;
       }
     }
