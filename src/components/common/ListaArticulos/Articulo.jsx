@@ -80,10 +80,7 @@ class Articulo extends Component {
 
                     try {
                         const response = await fetch(URL, {
-                            method: 'DELETE',
-                            headers: {
-                                "Content-Type": "application/json"
-                            }
+                            method: 'DELETE'
                         });
 
                         if (response.status === 200) {
@@ -149,31 +146,25 @@ class Articulo extends Component {
             // crear objeto a enviar
             let datos = {}
 
-            if (this.props.articulo.destacada) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Articulo ya destacado',
-                    text: 'El articulo ya esta destacado, si desea quitarlo del titular del inicio, destaque otro articulo',
-                    didOpen: () => {
-                        Swal.hideLoading();
-                    },
-                })
-                return;
-            } else {
-                datos = {
-                    titulo: this.props.articulo.titulo,
-                    imagen: this.props.articulo.imagen,
-                    contenido: this.props.articulo.contenido,
-                    destacada: true
-                }
+            // if (this.props.articulo.destacada) {
+            //     Swal.fire({
+            //         icon: 'warning',
+            //         title: 'Articulo ya destacado',
+            //         text: 'El articulo ya esta destacado, si desea quitarlo del titular del inicio, destaque otro articulo',
+            //         didOpen: () => {
+            //             Swal.hideLoading();
+            //         },
+            //     })
+            //     return;
+            // } else {
+            // }
+            
+            datos = {
+                idADestacar: id,
             }
-
-
-
-
             // enviar el objeto a la api, operacion POST
 
-            await fetch(URL + '/' + id, {
+            await fetch(URL, {
                 method: 'PUT',
                 headers: {
                     "Content-Type": "application/json"
@@ -182,37 +173,11 @@ class Articulo extends Component {
             })
                 .then(response => {
                     if (response.status === 200) {
-                        this.props.consultarAPI()
-                        .then((arreglo)=>{
-                            let datosArticulos = {};
-                            arreglo.map(async articulo => {
-
-                                if(articulo._id != id && articulo.destacada){
-
-                                    datosArticulos = {
-                                        titulo: articulo.titulo,
-                                        imagen: articulo.imagen,
-                                        contenido: articulo.contenido,
-                                        destacada: false
-                                    }
-                                    await fetch(URL + '/' + articulo._id, {
-                                        method: 'PUT',
-                                        headers: {
-                                            "Content-Type": "application/json"
-                                        },
-                                        body: JSON.stringify(datosArticulos)
-                                    })
-                                    
-                                    
-                                    await this.props.consultarAPI();
-                                    ventanaCargando.close();
-
-                                }
-
-                            })
-                        })
-                        
+                        this.props.consultarAPI();
                     }
+                    setTimeout(() => {
+                        ventanaCargando.close();
+                    }, 1000);
                 })
                 .catch(error => {
                     console.log(error);
@@ -223,7 +188,6 @@ class Articulo extends Component {
                         confirmButtonColor: '#006dc0'
                     })
                 });
-
         }
 
 

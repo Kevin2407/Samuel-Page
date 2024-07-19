@@ -15,33 +15,41 @@ function Editar(props) {
     const [contenido, setContenido] = useState("");
     const [destacada, setDestacada] = useState(false);
     const [articuloEditar, setArticuloEditar] = useState({});
+    const [fecha, setFecha] = useState('');
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(false);
 
     // obtengo el parametro de la URL
     const id = props.match.params.id;
 
-    useEffect(() => {
-        async function llamarArticulo() {
+    async function llamarArticulo() {
 
-            // consultar producto seleccionado
-            try {
-                const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/${id}`);
-                if (respuesta.status === 200) {
-                    const resultado = await respuesta.json();
-                    setArticuloEditar(resultado);
-                    setTitulo(articuloEditar.titulo);
-                    setContenido(articuloEditar.contenido);
-                    setDestacada(articuloEditar.destacada);
-                    setImagen(articuloEditar.imagen);
-                }
-            } catch (e) {
-                console.log(e)
+        // consultar producto seleccionado
+        try {
+            const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/${id}`);
+            if (respuesta.status === 200) {
+                const resultado = await respuesta.json();
+                setArticuloEditar(resultado)
+                // setTitulo(articuloEditar.titulo);
+                // setContenido(articuloEditar.contenido);
+                // setDestacada(articuloEditar.destacada);
+                // setImagen(articuloEditar.imagen);
             }
+        } catch (e) {
+            console.log(e)
         }
+    }
+    useEffect(() => {
         llamarArticulo();
     }, []);
-
+    useEffect(() => {
+        console.log(articuloEditar)
+        setTitulo(articuloEditar.titulo);
+        setContenido(articuloEditar.contenido);
+        setDestacada(articuloEditar.destacada);
+        setImagen(articuloEditar.imagen);
+        setFecha(articuloEditar.fecha);
+    }, [articuloEditar]);
 
 
     const editorRef = useRef(null);
@@ -58,7 +66,6 @@ function Editar(props) {
         }).then(() => {
             setLoading(false);
         });
-
 
         if (editorRef.current) {
 
@@ -85,8 +92,11 @@ function Editar(props) {
                     titulo: titulo,
                     imagen: imagen,
                     contenido: contenido,
-                    destacada: destacada
+                    destacada: destacada,
+                    fecha: fecha
+
                 }
+                console.log(datos)
 
 
 
@@ -102,7 +112,7 @@ function Editar(props) {
 
                     // ejecutar la solicitud
                     const respuesta = await fetch(URL + '/' + id, parametros);
-                    if (await respuesta.status === 200) {
+                    if (respuesta.status === 200) {
                         // recargar los articulos
                         props.consultarAPI();
                         // redireccionar a administracion

@@ -10,18 +10,18 @@ const Seguridad = ({setEnSesion}) => {
 
     const ingresar=(e)=>{
         e.preventDefault();
-        if(emailIngresado === 'admin@a' && contraIngresada === 'admin'){
-            setEnSesion(true);
-        }else{
-            Swal.fire({
-                title: 'Error!',
-                text: 'Email o contraseña invalidos',
-                icon: 'error',
-                confirmButtonText: 'Entiendo',
-                confirmButtonColor: '#006dc0'
-            })
-        }
-        
+        // if(emailIngresado === 'admin@a' && contraIngresada === 'admin'){
+        //     setEnSesion(true);
+        // }else{
+        //     Swal.fire({
+        //         title: 'Error!',
+        //         text: 'Email o contraseña invalidos',
+        //         icon: 'error',
+        //         confirmButtonText: 'Entiendo',
+        //         confirmButtonColor: '#006dc0'
+        //     })
+        // }
+        setEnSesion(true);
     }
 
   return (

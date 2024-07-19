@@ -20,7 +20,8 @@ function App() {
   const [articulos,setArticulos] = useState([]);
   const [artDestacado,setArtDestacado] = useState({});
   const [enSesion,setEnSesion] = useState(false);
-  const URL = process.env.REACT_APP_API_URL;
+  // const URL = process.env.REACT_APP_API_URL;
+  const URL = 'https://localhost:4000/api/articulos'
 
   useEffect(
     ()=> {
@@ -29,6 +30,7 @@ function App() {
 
     const consultarAPI = async ()=>{
       try{
+        console.log(URL) 
         const consulta =  await fetch(URL);
         const respuesta = await consulta.json();
         setArticulos(respuesta);
