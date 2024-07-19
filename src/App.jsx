@@ -93,7 +93,7 @@ function App() {
             permite ingresar a administracion */}
             {
               enSesion ?
-                <Administracion consultarAPI={consultarAPI} articulos={articulos} sinEtiquetas={decodeHtmlEntities}></Administracion>
+                <Administracion consultarAPI={consultarAPI} articulos={articulos} sinEtiquetas={decodeHtmlEntities} artDestacado={artDestacado}></Administracion>
               :
                 <Seguridad setEnSesion={setEnSesion}></Seguridad>
             }

@@ -38,7 +38,6 @@ class Articulo extends Component {
 
     render() {
 
-
         const imgComponent = () => {
 
             if (this.state.b) {
@@ -56,7 +55,7 @@ class Articulo extends Component {
                     <div className='text-center' style={{ display: "grid", alignContent: "center", width: '10%', justifyContent: 'center' }}>
                         <Link to={`/administracion/editar/${this.props.articulo._id}`} style={{ backgroundColor: "#006dc0" }} className='btn text-light mb-1 botones-articulo'><FontAwesomeIcon icon={iconoSolid.faPenToSquare} style={{ color: "#f5f5f5", }} /></Link>
                         <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => borrar(this.props.articulo._id)}><FontAwesomeIcon icon={iconoSolid.faTrash} style={{ color: "#f5f5f5", }} /></button>
-                        <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => destacar(this.props.articulo._id)}><FontAwesomeIcon icon={this.props.articulo.destacada ? iconoSolid.faStar : iconoRegular.faStar} style={{ color: "#f5f5f5", }} /></button>
+                        <button style={{ backgroundColor: "#006dc0" }} className='btn mt-1 botones-articulo' onClick={() => destacar(this.props.articulo._id)}><FontAwesomeIcon icon={this.props.isDestacado ? iconoSolid.faStar : iconoRegular.faStar} style={{ color: "#f5f5f5", }} /></button>
                     </div>
                 )
             }

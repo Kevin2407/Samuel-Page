@@ -9,6 +9,7 @@ class ListaArticulosEdit extends Component {
 
 
     render() {
+        const isDestacado = idArt => this.props.artDestacado?._id === idArt;
 
         if(this.props.articulos){
             return (
@@ -19,7 +20,7 @@ class ListaArticulosEdit extends Component {
                                 return (
                                     <div className='border' key={key}>
                                         <li className='d-flex'>
-                                            <Articulo consultarAPI={this.props.consultarAPI} articulo={item} edit={this.props.edit} sinEtiquetas={this.props.sinEtiquetas}></Articulo>
+                                            <Articulo consultarAPI={this.props.consultarAPI} articulo={item} edit={this.props.edit} sinEtiquetas={this.props.sinEtiquetas} isDestacado={isDestacado(item._id)}></Articulo>
                                         </li>
                                     </div>
                                 )
