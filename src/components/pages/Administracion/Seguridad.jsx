@@ -21,7 +21,6 @@ const Seguridad = ({setEnSesion}) => {
                 confirmButtonColor: '#006dc0'
             })
         }
-        setEnSesion(true);
     }
 
   return (
