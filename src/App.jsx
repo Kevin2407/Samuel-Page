@@ -35,7 +35,11 @@ function App() {
 
     const consultarAPI = async ()=>{
       try{
-        const consulta =  await fetch(URL);
+        const consulta = await fetch(URL, {
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        });
         const respuesta = await consulta.json();
         setArticulos(respuesta);
         return respuesta;
@@ -56,9 +60,13 @@ function App() {
       }
     }
 
-    const consultarDestacado = async ()=>{ 
+    const consultarDestacado = async ()=>{
       try{
-        const consulta =  await fetch(URL+'/destacado');
+        const consulta = await fetch(URL + '/destacado', {
+          headers: {
+            'ngrok-skip-browser-warning': 'true'
+          }
+        });
         const respuesta = await consulta.json();
         const destacado = articulos.find(art => art._id === respuesta.value);
         setArtDestacado(destacado);

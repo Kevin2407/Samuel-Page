@@ -26,7 +26,11 @@ function Editar(props) {
 
         // consultar producto seleccionado
         try {
-            const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/${id}`);
+            const respuesta = await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
+                headers: {
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            })
             if (respuesta.status === 200) {
                 const resultado = await respuesta.json();
                 setArticuloEditar(resultado)

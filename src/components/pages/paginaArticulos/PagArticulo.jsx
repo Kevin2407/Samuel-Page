@@ -30,7 +30,11 @@ export default function PagArticulo(props) {
 
   useEffect(() => {
     // consultar producto seleccionado
-    fetch(`${process.env.REACT_APP_API_URL}/${id}`)
+    fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
+      headers: {
+        'ngrok-skip-browser-warning': 'true'
+      }
+    })
       .then((respuesta) => respuesta.json())
       .then((resultado) => {
         setArticuloSelect(resultado);
